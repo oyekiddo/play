@@ -106,17 +106,31 @@
     // This is the language model we're going to start up with. The only reason I'm making it a class property is that I reuse it a bunch of times in this example, 
     // but you can pass the string contents directly to OEPocketsphinxController:startListeningWithLanguageModelAtPath:dictionaryAtPath:languageModelIsJSGF:
     
-    NSArray *firstLanguageArray = @[@"harra",
-                                    @"kaalaa",
-                                    @"laala",
-                                    @"paanii"
+    NSArray *firstLanguageArray = @[@"HAI",
+                                    @"HARA",
+                                    @"KAALA",
+                                    @"KAALAA",
+                                    @"LAALA",
+                                    @"LAALAA",
+                                    @"LAAL",
+                                    @"MEIRAA",
+                                    @"MERAA",
+                                    @"NAAMA",
+                                    @"NAMASTE",
+                                    @"NAAMASTE",
+                                    @"NEELAA",
+                                    @"NILA",
+                                    @"PEELAA",
+                                    @"PILAA",
+                                    @"SAFED",
+                                    @"CHANGE MODEL"
                                     ];
-    
+  
     OELanguageModelGenerator *languageModelGenerator = [[OELanguageModelGenerator alloc] init]; 
     
     // languageModelGenerator.verboseLanguageModelGenerator = TRUE; // Uncomment me for verbose language model generator debug output.
 
-    NSError *error = [languageModelGenerator generateLanguageModelFromArray:firstLanguageArray withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelHindi"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" in order to create a language model for Spanish recognition instead of English.
+    NSError *error = [languageModelGenerator generateLanguageModelFromArray:firstLanguageArray withFilesNamed:@"FirstOpenEarsDynamicLanguageModel" forAcousticModelAtPath:[OEAcousticModel pathToModel:@"AcousticModelEnglish"]]; // Change "AcousticModelEnglish" to "AcousticModelSpanish" in order to create a language model for Spanish recognition instead of English.
     
     
     if(error) {
