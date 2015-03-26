@@ -11,38 +11,8 @@ import SpriteKit
 
 class HouseViewController: UIViewController, OEEventsObserverDelegate {
   
-  let languageModelGenerator:OELanguageModelGenerator! = OELanguageModelGenerator()
   let eventsObserver:OEEventsObserver! = OEEventsObserver()
-  
-  let houseViewLanguageModel:String!
-  let houseViewDictionary:String!
-  
-  required init(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    eventsObserver.delegate = self
-    OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    let languageArray = ["LAAL", "NEELAA", "HARA", "PEELAA", "SAFED", "KAALAA"]
-    var error:NSError? = languageModelGenerator.generateLanguageModelFromArray(languageArray, withFilesNamed: "HouseViewLanguageModel", forAcousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"))
-    if (error != nil) {
-      println("Dynamic language generator reported error \(error?.description)")
-    } else {
-      houseViewLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModelWithRequestedName("HouseViewLanguageModel")
-      houseViewDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionaryWithRequestedName("HouseViewLanguageModel")
-    }
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    if OEPocketsphinxController.sharedInstance().isListening {
-      OEPocketsphinxController.sharedInstance().changeLanguageModelToFile(houseViewLanguageModel, withDictionary: houseViewDictionary )
-    } else {
-      OEPocketsphinxController.sharedInstance().startListeningWithLanguageModelAtPath(houseViewLanguageModel, dictionaryAtPath: houseViewDictionary, acousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"), languageModelIsJSGF: false)
-    }
-  }
-  
-  
+
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     
@@ -52,6 +22,14 @@ class HouseViewController: UIViewController, OEEventsObserverDelegate {
     let scene = HouseScene(size: skView.bounds.size)
     scene.scaleMode = .AspectFill
     skView.presentScene(scene)
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    eventsObserver.delegate = self
+  }
+  
+  override func viewDidDisappear(animated: Bool) {
+    eventsObserver.delegate = nil
   }
   
   override func shouldAutorotate() -> Bool {
@@ -79,7 +57,6 @@ class HouseViewController: UIViewController, OEEventsObserverDelegate {
   func pocketsphinxDidReceiveHypothesis(hypothesis: NSString, recognitionScore: NSString, utteranceID: NSString) {
     if hypothesis as String == "SAFED" {
       self.navigationController?.popToRootViewControllerAnimated(true);
-      OEPocketsphinxController.sharedInstance().stopListening()
     }
     println("The received hypothesis is \(hypothesis) with a score of \(recognitionScore) and an ID of \(utteranceID)")
   }

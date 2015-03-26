@@ -11,48 +11,28 @@ import SpriteKit
 
 class JungleViewController: UIViewController, OEEventsObserverDelegate {
   
-  let languageModelGenerator:OELanguageModelGenerator! = OELanguageModelGenerator()
   let eventsObserver:OEEventsObserver! = OEEventsObserver()
-  
   var houseView:HouseViewController?
-  let jungleViewLanguageModel:String!
-  let jungleViewDictionary:String!
-  
-  required init(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    eventsObserver.delegate = self
-    OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    let languageArray = ["LAAL", "NEELAA", "HARA", "PEELAA", "SAFED", "KAALAA"]
-    var error:NSError? = languageModelGenerator.generateLanguageModelFromArray(languageArray, withFilesNamed: "JungleViewLanguageModel", forAcousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"))
-    if (error != nil) {
-      println("Dynamic language generator reported error \(error?.description)")
-    } else {
-      jungleViewLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModelWithRequestedName("JungleViewLanguageModel")
-      jungleViewDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionaryWithRequestedName("JungleViewLanguageModel")
-    }
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    houseView = self.storyboard?.instantiateViewControllerWithIdentifier("houseView") as? HouseViewController
-    OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    if OEPocketsphinxController.sharedInstance().isListening {
-      OEPocketsphinxController.sharedInstance().changeLanguageModelToFile(jungleViewLanguageModel, withDictionary: jungleViewDictionary )
-    } else {
-      OEPocketsphinxController.sharedInstance().startListeningWithLanguageModelAtPath(jungleViewLanguageModel, dictionaryAtPath: jungleViewDictionary, acousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"), languageModelIsJSGF: false)
-    }
-  }
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     
+    houseView = self.storyboard?.instantiateViewControllerWithIdentifier("houseView") as? HouseViewController
+
     let skView = view as SKView
     skView.multipleTouchEnabled = false
     
     let scene = JungleScene(size: skView.bounds.size)
     scene.scaleMode = .AspectFill
     skView.presentScene(scene)
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    eventsObserver.delegate = self
+  }
+  
+  override func viewDidDisappear(animated: Bool) {
+    eventsObserver.delegate = nil
   }
   
   override func shouldAutorotate() -> Bool {
@@ -85,10 +65,8 @@ class JungleViewController: UIViewController, OEEventsObserverDelegate {
     switch hypothesis as String {
     case "HARA":
       self.navigationController?.pushViewController( houseView!, animated: true )
-      OEPocketsphinxController.sharedInstance().stopListening()
     case "SAFED":
       self.navigationController?.popToRootViewControllerAnimated(true);
-      OEPocketsphinxController.sharedInstance().stopListening()
     default:
       break
     }

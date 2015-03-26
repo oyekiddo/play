@@ -72,6 +72,14 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
     skView.presentScene(scene)
   }
   
+  override func viewDidAppear(animated: Bool) {
+    eventsObserver.delegate = self
+  }
+  
+  override func viewDidDisappear(animated: Bool) {
+    eventsObserver.delegate = nil
+  }
+  
   override func shouldAutorotate() -> Bool {
     return true
   }
@@ -110,16 +118,12 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
     switch hypothesis as String {
     case "HARA":
       self.navigationController?.pushViewController( houseView!, animated: true )
-      OEPocketsphinxController.sharedInstance().stopListening()
     case "PEELAA":
       self.navigationController?.pushViewController( gameView!, animated: true )
-      OEPocketsphinxController.sharedInstance().stopListening()
     case "NEELAA":
       self.navigationController?.pushViewController( theaterView!, animated: true )
-      OEPocketsphinxController.sharedInstance().stopListening()
     case "LAAL":
       self.navigationController?.pushViewController( jungleView!, animated: true )
-      OEPocketsphinxController.sharedInstance().stopListening()
     default:
       break
     }

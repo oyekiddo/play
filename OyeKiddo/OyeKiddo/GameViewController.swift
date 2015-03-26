@@ -11,41 +11,13 @@ import SpriteKit
 
 class GameViewController: UIViewController, OEEventsObserverDelegate {
 
-  let languageModelGenerator:OELanguageModelGenerator! = OELanguageModelGenerator()
   let eventsObserver:OEEventsObserver! = OEEventsObserver()
-  
   var houseView:HouseViewController?
-  let gameViewLanguageModel:String!
-  let gameViewDictionary:String!
-  
-  required init(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    eventsObserver.delegate = self
-    OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    let languageArray = ["LAAL", "NEELAA", "HARA", "PEELAA", "SAFED", "KAALAA"]
-    var error:NSError? = languageModelGenerator.generateLanguageModelFromArray(languageArray, withFilesNamed: "GameViewLanguageModel", forAcousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"))
-    if (error != nil) {
-      println("Dynamic language generator reported error \(error?.description)")
-    } else {
-      gameViewLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModelWithRequestedName("GameViewLanguageModel")
-      gameViewDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionaryWithRequestedName("GameViewLanguageModel")
-    }
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    houseView = self.storyboard?.instantiateViewControllerWithIdentifier("houseView") as? HouseViewController
-    OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    if OEPocketsphinxController.sharedInstance().isListening {
-      OEPocketsphinxController.sharedInstance().changeLanguageModelToFile(gameViewLanguageModel, withDictionary: gameViewDictionary )
-    } else {
-      OEPocketsphinxController.sharedInstance().startListeningWithLanguageModelAtPath(gameViewLanguageModel, dictionaryAtPath: gameViewDictionary, acousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"), languageModelIsJSGF: false)
-    }
-  }
 
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
+
+    houseView = self.storyboard?.instantiateViewControllerWithIdentifier("houseView") as? HouseViewController
 
     let skView = view as SKView
     skView.multipleTouchEnabled = false
@@ -55,6 +27,14 @@ class GameViewController: UIViewController, OEEventsObserverDelegate {
     skView.presentScene(scene)
   }
   
+  override func viewDidAppear(animated: Bool) {
+    eventsObserver.delegate = self
+  }
+
+  override func viewDidDisappear(animated: Bool) {
+    eventsObserver.delegate = nil
+  }
+
   override func shouldAutorotate() -> Bool {
     return true
   }
@@ -85,10 +65,8 @@ class GameViewController: UIViewController, OEEventsObserverDelegate {
     switch hypothesis as String {
     case "HARA":
       self.navigationController?.pushViewController( houseView!, animated: true )
-      OEPocketsphinxController.sharedInstance().stopListening()
     case "SAFED":
       self.navigationController?.popToRootViewControllerAnimated(true);
-      OEPocketsphinxController.sharedInstance().stopListening()
     default:
       break
     }
