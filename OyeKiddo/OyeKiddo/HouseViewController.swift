@@ -16,7 +16,7 @@ class HouseViewController: UIViewController, OEEventsObserverDelegate {
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     
-    let skView = view as SKView
+    let skView = view as! SKView
     skView.multipleTouchEnabled = false
     
     let scene = HouseScene(size: skView.bounds.size)
@@ -54,9 +54,14 @@ class HouseViewController: UIViewController, OEEventsObserverDelegate {
   }
   
   //OpenEars methods begin
-  func pocketsphinxDidReceiveHypothesis(hypothesis: NSString, recognitionScore: NSString, utteranceID: NSString) {
-    if hypothesis as String == "SAFED" {
+  func pocketsphinxDidReceiveHypothesis(hypothesis: String, recognitionScore: String, utteranceID: String) {
+    switch hypothesis {
+    case "SAFED":
       self.navigationController?.popToRootViewControllerAnimated(true);
+    case "WHITE":
+      self.navigationController?.popToRootViewControllerAnimated(true);
+    default:
+      break
     }
     println("The received hypothesis is \(hypothesis) with a score of \(recognitionScore) and an ID of \(utteranceID)")
   }

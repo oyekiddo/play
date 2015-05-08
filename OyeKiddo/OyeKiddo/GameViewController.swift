@@ -19,7 +19,7 @@ class GameViewController: UIViewController, OEEventsObserverDelegate {
 
     houseView = self.storyboard?.instantiateViewControllerWithIdentifier("houseView") as? HouseViewController
 
-    let skView = view as SKView
+    let skView = view as! SKView
     skView.multipleTouchEnabled = false
 
     let scene = GameScene(size: skView.bounds.size)
@@ -61,11 +61,15 @@ class GameViewController: UIViewController, OEEventsObserverDelegate {
   }
 
   //OpenEars methods begin
-  func pocketsphinxDidReceiveHypothesis(hypothesis: NSString, recognitionScore: NSString, utteranceID: NSString) {
-    switch hypothesis as String {
+  func pocketsphinxDidReceiveHypothesis(hypothesis: String, recognitionScore: String, utteranceID: String) {
+    switch hypothesis {
     case "HARA":
       self.navigationController?.pushViewController( houseView!, animated: true )
     case "SAFED":
+      self.navigationController?.popToRootViewControllerAnimated(true);
+    case "GREEN":
+      self.navigationController?.pushViewController( houseView!, animated: true )
+    case "WHITE":
       self.navigationController?.popToRootViewControllerAnimated(true);
     default:
       break

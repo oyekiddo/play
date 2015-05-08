@@ -15,31 +15,41 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
   @IBOutlet weak var toJungleButton: UIButton!
   @IBOutlet weak var toTheaterButton: UIButton!
   
-  let languageModelGenerator:OELanguageModelGenerator! = OELanguageModelGenerator()
-  let eventsObserver:OEEventsObserver! = OEEventsObserver()
+  let languageModelGenerator:OELanguageModelGenerator!
+  let eventsObserver:OEEventsObserver!
 
   var houseView:HouseViewController?
   var gameView:GameViewController?
   var jungleView:JungleViewController?
   var theaterView:TheaterViewController?
-  let mapViewLanguageModel:String!
-  let mapViewDictionary:String!
+  let languageModelPath:String!
+  let dictionaryPath:String!
+  let acousticModelPath:String!
 
   required init(coder aDecoder: NSCoder)
   {
-    super.init(coder: aDecoder)
-    eventsObserver.delegate = self
+    languageModelGenerator = OELanguageModelGenerator()
+    eventsObserver = OEEventsObserver()
     OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
-    let languageArray = ["LAAL", "NEELAA", "HARA", "PEELAA", "SAFED", "KAALAA"]
-    var error:NSError? = languageModelGenerator.generateLanguageModelFromArray(languageArray, withFilesNamed: "MapViewLanguageModel", forAcousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"))
+    acousticModelPath = OEAcousticModel.pathToModel("AcousticModelEnglish")
+    let languageArray = ["LAAL", "NEELAA", "HARA", "PEELA", "SAFED", "KAALAA", "RED", "BLUE", "GREEN", "YELLOW", "WHITE", "BLACK" ]
+    var error:NSError? = languageModelGenerator.generateLanguageModelFromArray(languageArray, withFilesNamed: "LanguageModel", forAcousticModelAtPath: acousticModelPath )
+
+//    var error:NSError? = languageModelGenerator.generateRejectingLanguageModelFromArray( languageArray, withFilesNamed: "LanguageModel", withOptionalExclusions:nil, usingVowelsOnly:false,
+//      withWeight:nil, forAcousticModelAtPath: acousticModelPath)
+
     if (error != nil) {
       println("Dynamic language generator reported error \(error?.description)")
+      languageModelPath = nil
+      dictionaryPath = nil
     } else {
-      mapViewLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModelWithRequestedName("MapViewLanguageModel")
-      mapViewDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionaryWithRequestedName("MapViewLanguageModel")
+      languageModelPath = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModelWithRequestedName("LanguageModel")
+      dictionaryPath = languageModelGenerator.pathToSuccessfullyGeneratedDictionaryWithRequestedName("LanguageModel")
     }
+    super.init(coder: aDecoder)
+    eventsObserver.delegate = self
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     houseView = self.storyboard?.instantiateViewControllerWithIdentifier("houseView") as? HouseViewController
@@ -48,16 +58,17 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
     theaterView = self.storyboard?.instantiateViewControllerWithIdentifier("theaterView") as? TheaterViewController
     OEPocketsphinxController.sharedInstance().setActive( true, error: nil )
     if OEPocketsphinxController.sharedInstance().isListening {
-      OEPocketsphinxController.sharedInstance().changeLanguageModelToFile(mapViewLanguageModel, withDictionary: mapViewDictionary )
+      OEPocketsphinxController.sharedInstance().changeLanguageModelToFile( languageModelPath, withDictionary: dictionaryPath )
     } else {
-      OEPocketsphinxController.sharedInstance().startListeningWithLanguageModelAtPath(mapViewLanguageModel, dictionaryAtPath: mapViewDictionary, acousticModelAtPath: OEAcousticModel.pathToModel("AcousticModelEnglish"), languageModelIsJSGF: false)
+      OEPocketsphinxController.sharedInstance().startListeningWithLanguageModelAtPath( languageModelPath, dictionaryAtPath: dictionaryPath, acousticModelAtPath: acousticModelPath, languageModelIsJSGF: false)
+//      OEPocketsphinxController.sharedInstance().startRealtimeListeningWithLanguageModelAtPath( languageModelPath, dictionaryAtPath: dictionaryPath, acousticModelAtPath: acousticModelPath )
     }
   }
 
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     
-    let skView = view as SKView
+    let skView = view as! SKView
     skView.multipleTouchEnabled = false
     
     let size = skView.bounds.size
@@ -114,8 +125,8 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
   }
 
   //OpenEars methods begin
-  func pocketsphinxDidReceiveHypothesis(hypothesis: NSString, recognitionScore: NSString, utteranceID: NSString) {
-    switch hypothesis as String {
+  func pocketsphinxDidReceiveHypothesis(hypothesis: String, recognitionScore: String, utteranceID: String) {
+    switch hypothesis {
     case "HARA":
       self.navigationController?.pushViewController( houseView!, animated: true )
     case "PEELAA":
@@ -123,6 +134,14 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
     case "NEELAA":
       self.navigationController?.pushViewController( theaterView!, animated: true )
     case "LAAL":
+      self.navigationController?.pushViewController( jungleView!, animated: true )
+    case "GREEN":
+      self.navigationController?.pushViewController( houseView!, animated: true )
+    case "YELLOW":
+      self.navigationController?.pushViewController( gameView!, animated: true )
+    case "BLUE":
+      self.navigationController?.pushViewController( theaterView!, animated: true )
+    case "RED":
       self.navigationController?.pushViewController( jungleView!, animated: true )
     default:
       break
@@ -164,6 +183,34 @@ class MapViewController: UIViewController, OEEventsObserverDelegate {
   
   func pocketSphinxContinuousTeardownDidFailWithReason(reasonForFailure: String) {
     println("Listening teardown wasn't successful and returned the failure reason: \(reasonForFailure)")
+  }
+
+  func rapidEarsDidReceiveLiveSpeechHypothesis( hypothesis: NSString, recognitionScore: NSString ) {
+    switch hypothesis as String {
+    case "HARA":
+      self.navigationController?.pushViewController( houseView!, animated: true )
+    case "PEELAA":
+      self.navigationController?.pushViewController( gameView!, animated: true )
+    case "NEELAA":
+      self.navigationController?.pushViewController( theaterView!, animated: true )
+    case "LAAL":
+      self.navigationController?.pushViewController( jungleView!, animated: true )
+    case "GREEN":
+      self.navigationController?.pushViewController( houseView!, animated: true )
+    case "YELLOW":
+      self.navigationController?.pushViewController( gameView!, animated: true )
+    case "BLUE":
+      self.navigationController?.pushViewController( theaterView!, animated: true )
+    case "RED":
+      self.navigationController?.pushViewController( jungleView!, animated: true )
+    default:
+      break
+    }
+    println("rapidEarsDidReceiveLiveSpeechHypothesis: \(hypothesis)")
+  }
+
+  func rapidEarsDidReceiveFinishedSpeechHypothesis( hypothesis: String, recognitionScore: String ) {
+    println( "rapidEarsDidReceiveFinishedSpeechHypothesis: \(hypothesis) ")
   }
   //OpenEars methods end
 }

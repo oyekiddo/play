@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E3F8B291AD348790060064F /* RapidEarsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3F8B281AD348790060064F /* RapidEarsDemo.framework */; };
+		8E3F8B2B1AD3488B0060064F /* RejectoDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3F8B2A1AD3488B0060064F /* RejectoDemo.framework */; };
 		8E41AE4F1AB5E4CC001B7755 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41AE4E1AB5E4CC001B7755 /* AppDelegate.swift */; };
 		8E41AE511AB5E4CD001B7755 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E41AE501AB5E4CD001B7755 /* GameScene.sks */; };
 		8E41AE531AB5E4CD001B7755 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41AE521AB5E4CD001B7755 /* GameScene.swift */; };
@@ -35,6 +37,7 @@
 		8E63CD951AC0D9C4005987DB /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E63CD8E1AC0D9C4005987DB /* AcousticModelEnglish.bundle */; };
 		8E63CD9A1AC0D9C4005987DB /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E63CD931AC0D9C4005987DB /* OpenEars.framework */; };
 		8E63CD9B1AC0D9C4005987DB /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E63CD941AC0D9C4005987DB /* Slt.framework */; };
+		8E9165961ACE323100CCF82E /* Skeleton.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E9165951ACE323100CCF82E /* Skeleton.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E3F8B281AD348790060064F /* RapidEarsDemo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RapidEarsDemo.framework; sourceTree = "<group>"; };
+		8E3F8B2A1AD3488B0060064F /* RejectoDemo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RejectoDemo.framework; sourceTree = "<group>"; };
 		8E41AE491AB5E4CC001B7755 /* OyeKiddo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyeKiddo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E41AE4D1AB5E4CC001B7755 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E41AE4E1AB5E4CC001B7755 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		8E63CD931AC0D9C4005987DB /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
 		8E63CD941AC0D9C4005987DB /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
 		8E63CD9D1AC0E6BF005987DB /* OyeKiddo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OyeKiddo-Bridging-Header.h"; sourceTree = "<group>"; };
+		8E9165951ACE323100CCF82E /* Skeleton.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Skeleton.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +94,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E63CD9B1AC0D9C4005987DB /* Slt.framework in Frameworks */,
 				8E63CD9A1AC0D9C4005987DB /* OpenEars.framework in Frameworks */,
+				8E3F8B291AD348790060064F /* RapidEarsDemo.framework in Frameworks */,
+				8E3F8B2B1AD3488B0060064F /* RejectoDemo.framework in Frameworks */,
+				8E63CD9B1AC0D9C4005987DB /* Slt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +116,7 @@
 			children = (
 				8E63CD8D1AC0D9C4005987DB /* Framework */,
 				8E41AE4B1AB5E4CC001B7755 /* OyeKiddo */,
+				8E9165941ACE323100CCF82E /* Models */,
 				8E41AE651AB5E4CD001B7755 /* OyeKiddoTests */,
 				8E41AE4A1AB5E4CC001B7755 /* Products */,
 				8E41AE7C1AB73105001B7755 /* Grid.atlas */,
@@ -185,9 +194,19 @@
 			children = (
 				8E63CD8E1AC0D9C4005987DB /* AcousticModelEnglish.bundle */,
 				8E63CD931AC0D9C4005987DB /* OpenEars.framework */,
+				8E3F8B2A1AD3488B0060064F /* RejectoDemo.framework */,
+				8E3F8B281AD348790060064F /* RapidEarsDemo.framework */,
 				8E63CD941AC0D9C4005987DB /* Slt.framework */,
 			);
 			path = Framework;
+			sourceTree = "<group>";
+		};
+		8E9165941ACE323100CCF82E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E9165951ACE323100CCF82E /* Skeleton.json */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +258,7 @@
 				TargetAttributes = {
 					8E41AE481AB5E4CC001B7755 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = EUAY6676RF;
 					};
 					8E41AE611AB5E4CD001B7755 = {
 						CreatedOnToolsVersion = 6.2;
@@ -272,6 +292,7 @@
 			files = (
 				8E41AE5D1AB5E4CD001B7755 /* LaunchScreen.xib in Resources */,
 				8E41AE5A1AB5E4CD001B7755 /* Images.xcassets in Resources */,
+				8E9165961ACE323100CCF82E /* Skeleton.json in Resources */,
 				8E41AE511AB5E4CD001B7755 /* GameScene.sks in Resources */,
 				8E63CD951AC0D9C4005987DB /* AcousticModelEnglish.bundle in Resources */,
 				8E41AE7D1AB73105001B7755 /* Grid.atlas in Resources */,
@@ -437,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/play/Framework,
@@ -456,6 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/play/Framework,

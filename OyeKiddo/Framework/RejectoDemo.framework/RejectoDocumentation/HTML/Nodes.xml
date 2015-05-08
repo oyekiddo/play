@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+  <TOC>
+    <Node>
+      <Name>Root</Name>
+      <Path>index.html</Path>
+      <Subnodes>
+       <Node>
+        <Name>Introduction and Installation</Name>
+        <Path>index.html</Path>
+       </Node>
+       <Node>
+        <Name>Class List</Name>
+        <Path>annotated.html</Path>
+        <Subnodes>
+         <Node>
+          <Name>OELanguageModelGenerator+Rejecto</Name>
+          <Path>category_o_e_language_model_generator_07_rejecto_08.html</Path>
+          <Subnodes>
+           <Node>
+            <Name>generateRejectingLanguageModelFromArray:withFilesNamed:withOptionalExclusions:usingVowelsOnly:withWeight:forAcousticModelAtPath:</Name>
+            <Path>category_o_e_language_model_generator_07_rejecto_08.html</Path>
+            <Anchor>a2f28f098617469ed260058e781a85567</Anchor>
+           </Node>
+           <Node>
+            <Name>deliverRejectedSpeechInHypotheses:</Name>
+            <Path>category_o_e_language_model_generator_07_rejecto_08.html</Path>
+            <Anchor>a113fc17f894a8aaa1b3988fdd19f71ba</Anchor>
+           </Node>
+          </Subnodes>
+         </Node>
+        </Subnodes>
+       </Node>
+      </Subnodes>
+    </Node>
+  </TOC>
+</DocSetNodes>
