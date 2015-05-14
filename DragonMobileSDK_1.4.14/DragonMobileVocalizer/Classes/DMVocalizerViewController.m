@@ -43,7 +43,7 @@
  * and are provided solely as an illustrative example.
  * 
  */
-const unsigned char SpeechKitApplicationKey[] = {INSERT_YOUR_APPLICATION_KEY_HERE};
+const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0x56, 0x86, 0xd3, 0x25, 0x16, 0xff, 0xb5, 0x1d, 0x4d, 0xa7, 0x4a, 0x44, 0x6c, 0xf3, 0xd5, 0xcc, 0xab, 0xdf, 0x76, 0xa0, 0xc5, 0xc2, 0x7c, 0x59, 0x3e, 0xea, 0xeb, 0x84, 0xf7, 0x2e, 0x12, 0x4d, 0xb4, 0xe5, 0x72, 0xcb, 0xe4, 0x27, 0xe8, 0x31, 0xce, 0x32, 0x75, 0x3a, 0x26, 0x4a, 0x07, 0xd1, 0x29, 0x7d, 0x71, 0xef, 0x3f, 0xed, 0x48, 0x7d, 0xd8, 0x33, 0x02};
 
 @implementation DMVocalizerViewController
 @synthesize textToRead,textReadSoFar,serverBox,portBox,speakButton,vocalizer;
@@ -83,12 +83,11 @@ const unsigned char SpeechKitApplicationKey[] = {INSERT_YOUR_APPLICATION_KEY_HER
      * Please note that all the specified values are non-functional
      * and are provided solely as an illustrative example.
      */ 
-
-    [SpeechKit setupWithID:INSERT_YOUR_APPLICATION_ID_HERE
-                      host:INSERT_YOUR_HOST_ADDRESS_HERE
-                      port:INSERT_YOUR_HOST_PORT_HERE
-                    useSSL:NO
-                  delegate:self];
+  [SpeechKit setupWithID:@"NMDPTRIAL_greg_omi_gmail_com20150504222803"
+                    host:@"sandbox.nmdp.nuancemobility.net"
+                    port:443
+                  useSSL:NO
+                delegate:nil];
 
     // Debug - Uncomment this code and fill in your server and port below, and set
     // the Main Window nib to MainWindow_Debug (in DMVocalizer-Info.plist)
@@ -140,7 +139,7 @@ const unsigned char SpeechKitApplicationKey[] = {INSERT_YOUR_APPLICATION_KEY_HER
     else {
         isSpeaking = YES;
 		// Initializes an english voice
-        vocalizer = [[SKVocalizer alloc] initWithLanguage:@"en_US" delegate:self];
+        vocalizer = [[SKVocalizer alloc] initWithLanguage:@"hi_IN" delegate:self];
 
 		// Initializes a french voice
 		// vocalizer = [[SKVocalizer alloc] initWithLanguage:@"fr_FR" delegate:self];
