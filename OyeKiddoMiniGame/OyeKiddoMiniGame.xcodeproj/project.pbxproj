@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E3D079E1B0552A90077D7FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D079D1B0552A90077D7FD /* AudioToolbox.framework */; };
+		8E3D07A01B0552B10077D7FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D079F1B0552B10077D7FD /* AVFoundation.framework */; };
+		8E3D07A21B0552BA0077D7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07A11B0552BA0077D7FD /* CFNetwork.framework */; };
+		8E3D07A41B0552C90077D7FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07A31B0552C90077D7FD /* CoreGraphics.framework */; };
+		8E3D07A61B0552D60077D7FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07A51B0552D60077D7FD /* Foundation.framework */; };
+		8E3D07A81B0552EB0077D7FD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07A71B0552EB0077D7FD /* Security.framework */; };
+		8E3D07AA1B0552F80077D7FD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07A91B0552F80077D7FD /* SystemConfiguration.framework */; };
+		8E3D07AC1B0553030077D7FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07AB1B0553030077D7FD /* UIKit.framework */; };
+		8E3D07AE1B0554BB0077D7FD /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07AD1B0554BB0077D7FD /* SpeechKit.framework */; };
 		8E6B5A971AFC18290007E066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B5A961AFC18290007E066 /* AppDelegate.swift */; };
 		8E6B5A991AFC18290007E066 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E6B5A981AFC18290007E066 /* GameScene.sks */; };
 		8E6B5A9B1AFC18290007E066 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B5A9A1AFC18290007E066 /* GameScene.swift */; };
@@ -15,7 +24,6 @@
 		8E6B5AA21AFC18290007E066 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E6B5AA11AFC18290007E066 /* Images.xcassets */; };
 		8E6B5AA51AFC18290007E066 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E6B5AA31AFC18290007E066 /* LaunchScreen.xib */; };
 		8E6B5AB11AFC18290007E066 /* OyeKiddoMiniGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6B5AB01AFC18290007E066 /* OyeKiddoMiniGameTests.swift */; };
-		8E6B5ABC1AFC19A50007E066 /* SpeechKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6B5ABB1AFC19A50007E066 /* SpeechKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E3D079D1B0552A90077D7FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8E3D079F1B0552B10077D7FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8E3D07A11B0552BA0077D7FD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8E3D07A31B0552C90077D7FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8E3D07A51B0552D60077D7FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8E3D07A71B0552EB0077D7FD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8E3D07A91B0552F80077D7FD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8E3D07AB1B0553030077D7FD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8E3D07AD1B0554BB0077D7FD /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = ../../DragonMobileSDK_1.4.14/SpeechKit.framework; sourceTree = "<group>"; };
 		8E6B5A911AFC18290007E066 /* OyeKiddoMiniGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyeKiddoMiniGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6B5A951AFC18290007E066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6B5A961AFC18290007E066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +58,6 @@
 		8E6B5AAA1AFC18290007E066 /* OyeKiddoMiniGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OyeKiddoMiniGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6B5AAF1AFC18290007E066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6B5AB01AFC18290007E066 /* OyeKiddoMiniGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OyeKiddoMiniGameTests.swift; sourceTree = "<group>"; };
-		8E6B5ABB1AFC19A50007E066 /* SpeechKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechKit.framework; path = ../../../DragonMobileSDK_1.4.14/DragonMobileRecognizer/SpeechKit.framework; sourceTree = "<group>"; };
 		8E6B5AC11AFC3E010007E066 /* OyeKiddoMiniGame-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OyeKiddoMiniGame-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +66,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E6B5ABC1AFC19A50007E066 /* SpeechKit.framework in Frameworks */,
+				8E3D07AE1B0554BB0077D7FD /* SpeechKit.framework in Frameworks */,
+				8E3D07A61B0552D60077D7FD /* Foundation.framework in Frameworks */,
+				8E3D07AC1B0553030077D7FD /* UIKit.framework in Frameworks */,
+				8E3D07A41B0552C90077D7FD /* CoreGraphics.framework in Frameworks */,
+				8E3D079E1B0552A90077D7FD /* AudioToolbox.framework in Frameworks */,
+				8E3D07AA1B0552F80077D7FD /* SystemConfiguration.framework in Frameworks */,
+				8E3D07A01B0552B10077D7FD /* AVFoundation.framework in Frameworks */,
+				8E3D07A81B0552EB0077D7FD /* Security.framework in Frameworks */,
+				8E3D07A21B0552BA0077D7FD /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +151,15 @@
 		8E6B5ABA1AFC198A0007E066 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8E6B5ABB1AFC19A50007E066 /* SpeechKit.framework */,
+				8E3D079D1B0552A90077D7FD /* AudioToolbox.framework */,
+				8E3D07AD1B0554BB0077D7FD /* SpeechKit.framework */,
+				8E3D07AB1B0553030077D7FD /* UIKit.framework */,
+				8E3D07A91B0552F80077D7FD /* SystemConfiguration.framework */,
+				8E3D07A71B0552EB0077D7FD /* Security.framework */,
+				8E3D07A51B0552D60077D7FD /* Foundation.framework */,
+				8E3D07A31B0552C90077D7FD /* CoreGraphics.framework */,
+				8E3D07A11B0552BA0077D7FD /* CFNetwork.framework */,
+				8E3D079F1B0552B10077D7FD /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			path = OyeKiddoMiniGame.xcodeproj;
@@ -371,6 +403,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/DragonMobileSDK_1.4.14/DragonMobileRecognizer,
+					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
 				);
 				INFOPLIST_FILE = OyeKiddoMiniGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -389,6 +422,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/DragonMobileSDK_1.4.14/DragonMobileRecognizer,
+					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
 				);
 				INFOPLIST_FILE = OyeKiddoMiniGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -455,6 +489,7 @@
 				8E6B5AB61AFC18290007E066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E6B5AB71AFC18290007E066 /* Build configuration list for PBXNativeTarget "OyeKiddoMiniGameTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +498,7 @@
 				8E6B5AB91AFC18290007E066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
