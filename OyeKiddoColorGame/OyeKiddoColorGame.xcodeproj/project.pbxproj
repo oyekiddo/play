@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E3D07BE1B05775D0077D7FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D07BD1B05775D0077D7FD /* main.m */; };
 		8E3D07C11B05775D0077D7FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D07C01B05775D0077D7FD /* AppDelegate.m */; };
-		8E3D07C41B05775D0077D7FD /* ColorGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D07C31B05775D0077D7FD /* ColorGameViewController.m */; };
+		8E3D07C41B05775D0077D7FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3D07C31B05775D0077D7FD /* ViewController.m */; };
 		8E3D07C71B05775D0077D7FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3D07C51B05775D0077D7FD /* Main.storyboard */; };
 		8E3D07C91B05775D0077D7FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E3D07C81B05775D0077D7FD /* Images.xcassets */; };
 		8E3D07CC1B05775D0077D7FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E3D07CA1B05775D0077D7FD /* LaunchScreen.xib */; };
@@ -23,6 +23,10 @@
 		8E3D08011B0578970077D7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08001B0578970077D7FD /* CFNetwork.framework */; };
 		8E3D08031B05789F0077D7FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08021B05789F0077D7FD /* AVFoundation.framework */; };
 		8E3D08051B0578A60077D7FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08041B0578A60077D7FD /* AudioToolbox.framework */; };
+		8E6984A61B06C71300942049 /* TrainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984A51B06C71300942049 /* TrainViewController.swift */; };
+		8E6984A81B06C74100942049 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984A71B06C74100942049 /* PlayViewController.swift */; };
+		8E6984AE1B06FEBC00942049 /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984AD1B06FEBC00942049 /* PlayScene.swift */; };
+		8E6984B01B06FEFC00942049 /* TrainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984AF1B06FEFC00942049 /* TrainScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +45,8 @@
 		8E3D07BD1B05775D0077D7FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E3D07BF1B05775D0077D7FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E3D07C01B05775D0077D7FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8E3D07C21B05775D0077D7FD /* ColorGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorGameViewController.h; sourceTree = "<group>"; };
-		8E3D07C31B05775D0077D7FD /* ColorGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorGameViewController.m; sourceTree = "<group>"; };
+		8E3D07C21B05775D0077D7FD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8E3D07C31B05775D0077D7FD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8E3D07C61B05775D0077D7FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E3D07C81B05775D0077D7FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8E3D07CB1B05775D0077D7FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +62,11 @@
 		8E3D08001B0578970077D7FD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8E3D08021B05789F0077D7FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8E3D08041B0578A60077D7FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8E6984A41B06C71200942049 /* OyeKiddoColorGame-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OyeKiddoColorGame-Bridging-Header.h"; sourceTree = "<group>"; };
+		8E6984A51B06C71300942049 /* TrainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainViewController.swift; sourceTree = "<group>"; };
+		8E6984A71B06C74100942049 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		8E6984AD1B06FEBC00942049 /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		8E6984AF1B06FEFC00942049 /* TrainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,12 +120,17 @@
 			children = (
 				8E3D07BF1B05775D0077D7FD /* AppDelegate.h */,
 				8E3D07C01B05775D0077D7FD /* AppDelegate.m */,
-				8E3D07C21B05775D0077D7FD /* ColorGameViewController.h */,
-				8E3D07C31B05775D0077D7FD /* ColorGameViewController.m */,
+				8E3D07C21B05775D0077D7FD /* ViewController.h */,
+				8E3D07C31B05775D0077D7FD /* ViewController.m */,
+				8E6984AF1B06FEFC00942049 /* TrainScene.swift */,
+				8E6984A51B06C71300942049 /* TrainViewController.swift */,
+				8E6984AD1B06FEBC00942049 /* PlayScene.swift */,
+				8E6984A71B06C74100942049 /* PlayViewController.swift */,
 				8E3D07C51B05775D0077D7FD /* Main.storyboard */,
 				8E3D07C81B05775D0077D7FD /* Images.xcassets */,
 				8E3D07CA1B05775D0077D7FD /* LaunchScreen.xib */,
 				8E3D07BB1B05775D0077D7FD /* Supporting Files */,
+				8E6984A41B06C71200942049 /* OyeKiddoColorGame-Bridging-Header.h */,
 			);
 			path = OyeKiddoColorGame;
 			sourceTree = "<group>";
@@ -263,8 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E3D07C41B05775D0077D7FD /* ColorGameViewController.m in Sources */,
+				8E3D07C41B05775D0077D7FD /* ViewController.m in Sources */,
+				8E6984B01B06FEFC00942049 /* TrainScene.swift in Sources */,
+				8E6984A81B06C74100942049 /* PlayViewController.swift in Sources */,
+				8E6984A61B06C71300942049 /* TrainViewController.swift in Sources */,
 				8E3D07C11B05775D0077D7FD /* AppDelegate.m in Sources */,
+				8E6984AE1B06FEBC00942049 /* PlayScene.swift in Sources */,
 				8E3D07BE1B05775D0077D7FD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +411,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
@@ -400,6 +419,8 @@
 				INFOPLIST_FILE = OyeKiddoColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OyeKiddoColorGame/OyeKiddoColorGame-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -407,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
@@ -414,6 +436,7 @@
 				INFOPLIST_FILE = OyeKiddoColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OyeKiddoColorGame/OyeKiddoColorGame-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -470,6 +493,7 @@
 				8E3D07DD1B05775D0077D7FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E3D07DE1B05775D0077D7FD /* Build configuration list for PBXNativeTarget "OyeKiddoColorGameTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +502,7 @@
 				8E3D07E01B05775D0077D7FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
