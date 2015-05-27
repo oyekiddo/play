@@ -24,7 +24,9 @@
 //
 
 #import "ViewController.h"
-#import <OyeKiddoColorGame-Swift.h>
+#import "PlayViewController.h"
+#import "TrainViewController.h"
+#import "GameData.h"
 
 /**
  * The login parameters should be specified in the following manner:
@@ -46,31 +48,13 @@
 const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0x56, 0x86, 0xd3, 0x25, 0x16, 0xff, 0xb5, 0x1d, 0x4d, 0xa7, 0x4a, 0x44, 0x6c, 0xf3, 0xd5, 0xcc, 0xab, 0xdf, 0x76, 0xa0, 0xc5, 0xc2, 0x7c, 0x59, 0x3e, 0xea, 0xeb, 0x84, 0xf7, 0x2e, 0x12, 0x4d, 0xb4, 0xe5, 0x72, 0xcb, 0xe4, 0x27, 0xe8, 0x31, 0xce, 0x32, 0x75, 0x3a, 0x26, 0x4a, 0x07, 0xd1, 0x29, 0x7d, 0x71, 0xef, 0x3f, 0xed, 0x48, 0x7d, 0xd8, 0x33, 0x02};
 @implementation ViewController
 
-@synthesize trainButton, playButton, voiceSearch, trainView, playView;
-
-/*
- // The designated initializer. Override to perform setup that is required before the view is loaded.
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
- // Custom initialization
- }
- return self;
- }
- */
-
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
- }
- */
-
+@synthesize trainButton, playButton, voiceSearch;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
   [super viewDidLoad];
   
-  trainView = (TrainViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"trainView"];
-  playView = (PlayViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"playView"];
   /**
    * The login parameters should be specified in the following manner:
    *
@@ -88,111 +72,42 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                     port:443
                   useSSL:NO
                 delegate:nil];
-  
-  // Set earcons to play
-//  SKEarcon* earconStart	= [SKEarcon earconWithName:@"earcon_listening.wav"];
-//  SKEarcon* earconStop	= [SKEarcon earconWithName:@"earcon_done_listening.wav"];
-//  SKEarcon* earconCancel	= [SKEarcon earconWithName:@"earcon_cancel.wav"];
-//  
-//  [SpeechKit setEarcon:earconStart forType:SKStartRecordingEarconType];
-//  [SpeechKit setEarcon:earconStop forType:SKStopRecordingEarconType];
-//  [SpeechKit setEarcon:earconCancel forType:SKCancelRecordingEarconType];
-  
-  // Debug - Uncomment this code and fill in your server and port below, and set
-  // the Main Window nib to MainWindow_Debug (in DMRecognizer-Info.plist)
-  // if you need the ability to change servers in DMRecognizer
-  //[serverBox setText:@""];
-  //[portBox setText:@""];
+  NSArray *dict = [GameData sharedData].dict;
+  int count = numWords;
+  if( dict.count < count ) {
+    TrainViewController *trainViewController = (TrainViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"trainViewController"];
+    [self.navigationController pushViewController: trainViewController  animated: true ];
+  }
 }
 
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
   // Releases the view if it doesn't have a superview.
   [super didReceiveMemoryWarning];
   
   // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
 }
 
-#pragma mark -
-#pragma mark Actions
-
-//- (IBAction)trainingButtonAction: (id)sender {
-//
-//  if (transactionState == TS_RECORDING) {
-//    [voiceSearch stopRecording];
-//  }
-//  else if (transactionState == TS_IDLE) {
-//    SKEndOfSpeechDetection detectionType;
-//    NSString* recoType;
-//    NSString* langType;
-//    
-//    transactionState = TS_INITIAL;
-//    
-//    if (recognitionType.selectedSegmentIndex == 0) {
-//      /* 'Search' is selected */
-//      detectionType = SKShortEndOfSpeechDetection; /* Searches tend to be short utterances free of pauses. */
-//      recoType = SKSearchRecognizerType; /* Optimize recognition performance for search text. */
-//    }
-//    else {
-//      /* 'Dictation' is selected */
-//      detectionType = SKLongEndOfSpeechDetection; /* Dictations tend to be long utterances that may include short pauses. */
-//      recoType = SKDictationRecognizerType; /* Optimize recognition performance for dictation or message text. */
-//    }
-//    
-//    switch (languageType.selectedSegmentIndex) {
-//      case 0:
-//        langType = @"en_US";
-//        break;
-//      case 1:
-//        langType = @"hi_IN";
-//        break;
-//      case 2:
-//        langType = @"fr_FR";
-//        break;
-//      case 3:
-//        langType = @"de_DE";
-//        break;
-//      default:
-//        langType = @"en_US";
-//        break;
-//    }
-//    /* Nuance can also create a custom recognition type optimized for your application if neither search nor dictation are appropriate. */
-//    
-//    NSLog(@"Recognizing type:'%@' Language Code: '%@' using end-of-speech detection:%lu.", recoType, langType, (unsigned long)detectionType);
-//    
-//    voiceSearch = [[SKRecognizer alloc] initWithType:recoType
-//                                           detection:detectionType
-//                                            language:langType
-//                                            delegate:self];
-//  }
-//}
-
-- (IBAction)trainButton:(id)sender {
-  NSLog(@"Train Button Pressed" );
-  [self.navigationController pushViewController: trainView  animated: true ];
+- (IBAction)trainButton:(id)sender
+{
+  TrainViewController *trainViewController = (TrainViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"trainViewController"];
+  [self.navigationController pushViewController: trainViewController  animated: true ];
 }
 
-- (IBAction)playButton:(id)sender {
-  NSLog(@"Play Button Pressed" );
-  [self.navigationController pushViewController: playView  animated: true ];
+- (IBAction)playButton:(id)sender
+{
+  PlayViewController *playViewController = (PlayViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"playViewController"];
+  [self.navigationController pushViewController: playViewController  animated: true ];
 }
 
-#pragma mark -
-#pragma mark SpeechKitDelegate methods
-
-- (void) destroyed {
+- (void) destroyed
+{
   // Debug - Uncomment this code and fill in your app ID below, and set
   // the Main Window nib to MainWindow_Debug (in DMRecognizer-Info.plist)
   // if you need the ability to change servers in DMRecognizer
@@ -212,73 +127,13 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
   //[SpeechKit setEarcon:earconStop forType:SKStopRecordingEarconType];
   //[SpeechKit setEarcon:earconCancel forType:SKCancelRecordingEarconType];
 }
-
-#pragma mark -
-#pragma mark SKRecognizerDelegate methods
-
-- (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
-{
-  NSLog(@"Recording started.");
-  
-  transactionState = TS_RECORDING;
-}
-
-- (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
-{
-  NSLog(@"Recording finished.");
-  
-  transactionState = TS_PROCESSING;
-}
-
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
-  NSLog(@"Got results.");
-  NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
-  
-  //long numOfResults = [results.results count];
-  
-  transactionState = TS_IDLE;
-  
-  if (results.suggestion) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggestion"
-                                                    message:results.suggestion
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-  }
-  voiceSearch = nil;
 }
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
 {
-  NSLog(@"Got error.");
-  NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
-  
-  transactionState = TS_IDLE;
-  
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                  message:[error localizedDescription]
-                                                 delegate:nil
-                                        cancelButtonTitle:@"OK"
-                                        otherButtonTitles:nil];
-  [alert show];
-  
-  if (suggestion) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Suggestion"
-                                                    message:suggestion
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-    
-  }
-  
-  voiceSearch = nil;
 }
 
-#pragma mark -
-#pragma mark UITextFieldDelegate methods
 
-SKRecognizer* voiceSearch;
 @end

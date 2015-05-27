@@ -25,7 +25,6 @@
 
 #import <UIKit/UIKit.h>
 #import <SpeechKit/SpeechKit.h>
-#import <OyeKiddoColorGame-Swift.h>
 
 @interface ViewController : UIViewController <SpeechKitDelegate, SKRecognizerDelegate, UITextFieldDelegate> {
   IBOutlet UIButton* trainButton;
@@ -34,9 +33,6 @@
   IBOutlet UISegmentedControl* languageType;
 
   SKRecognizer* voiceSearch;
-
-  TrainViewController* trainView;
-  PlayViewController* playView;
 
   enum {
     TS_IDLE,
@@ -48,9 +44,7 @@
 
 @property(nonatomic,retain) IBOutlet UIButton* trainButton;
 @property(nonatomic,retain) IBOutlet UIButton* playButton;
-@property(readonly)         SKRecognizer* voiceSearch;
-@property(nonatomic,retain) TrainViewController* trainView;
-@property(nonatomic,retain) PlayViewController* playView;
+@property(readonly) SKRecognizer* voiceSearch;
 
 - (IBAction)trainButton: (id)sender;
 - (IBAction)playButton: (id)sender;

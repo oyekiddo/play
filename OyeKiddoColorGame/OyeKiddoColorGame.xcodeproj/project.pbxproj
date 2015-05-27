@@ -23,10 +23,37 @@
 		8E3D08011B0578970077D7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08001B0578970077D7FD /* CFNetwork.framework */; };
 		8E3D08031B05789F0077D7FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08021B05789F0077D7FD /* AVFoundation.framework */; };
 		8E3D08051B0578A60077D7FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08041B0578A60077D7FD /* AudioToolbox.framework */; };
-		8E6984A61B06C71300942049 /* TrainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984A51B06C71300942049 /* TrainViewController.swift */; };
-		8E6984A81B06C74100942049 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984A71B06C74100942049 /* PlayViewController.swift */; };
-		8E6984AE1B06FEBC00942049 /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984AD1B06FEBC00942049 /* PlayScene.swift */; };
-		8E6984B01B06FEFC00942049 /* TrainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6984AF1B06FEFC00942049 /* TrainScene.swift */; };
+		8E57BACB1B0BF1F700E1B96C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */; };
+		8E57BAD11B0C095300E1B96C /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57BAD01B0C095300E1B96C /* Word.m */; };
+		8E5FCA811B0AB25000B54DA3 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */; };
+		8E5FCA891B0B040400B54DA3 /* TrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCA881B0B040400B54DA3 /* TrainViewController.m */; };
+		8E5FCA8C1B0B048600B54DA3 /* WordScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCA8B1B0B048600B54DA3 /* WordScene.m */; };
+		8E8133F21B101F2400C026D5 /* canYouTellMe.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133D91B101F2400C026D5 /* canYouTellMe.wav */; };
+		8E8133F31B101F2400C026D5 /* canYouTellMe2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133DA1B101F2400C026D5 /* canYouTellMe2.wav */; };
+		8E8133F41B101F2400C026D5 /* didntgethara.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133DB1B101F2400C026D5 /* didntgethara.wav */; };
+		8E8133F51B101F2400C026D5 /* didntgetkala.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133DC1B101F2400C026D5 /* didntgetkala.wav */; };
+		8E8133F61B101F2400C026D5 /* didntgetlaal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133DD1B101F2400C026D5 /* didntgetlaal.wav */; };
+		8E8133F71B101F2400C026D5 /* didntgetneela.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133DE1B101F2400C026D5 /* didntgetneela.wav */; };
+		8E8133F81B101F2400C026D5 /* didntgetpeela.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133DF1B101F2400C026D5 /* didntgetpeela.wav */; };
+		8E8133F91B101F2400C026D5 /* didntgetsafed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E01B101F2400C026D5 /* didntgetsafed.wav */; };
+		8E8133FA1B101F2400C026D5 /* hara.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E11B101F2400C026D5 /* hara.wav */; };
+		8E8133FB1B101F2400C026D5 /* kala.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E21B101F2400C026D5 /* kala.wav */; };
+		8E8133FC1B101F2400C026D5 /* kala2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E31B101F2400C026D5 /* kala2.wav */; };
+		8E8133FD1B101F2400C026D5 /* laal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E41B101F2400C026D5 /* laal.wav */; };
+		8E8133FE1B101F2400C026D5 /* neela.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E51B101F2400C026D5 /* neela.wav */; };
+		8E8133FF1B101F2400C026D5 /* peela2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E61B101F2400C026D5 /* peela2.wav */; };
+		8E8134001B101F2400C026D5 /* right.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E71B101F2400C026D5 /* right.wav */; };
+		8E8134011B101F2400C026D5 /* right2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E81B101F2400C026D5 /* right2.wav */; };
+		8E8134021B101F2400C026D5 /* right3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133E91B101F2400C026D5 /* right3.wav */; };
+		8E8134031B101F2400C026D5 /* right4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133EA1B101F2400C026D5 /* right4.wav */; };
+		8E8134041B101F2400C026D5 /* safed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133EB1B101F2400C026D5 /* safed.wav */; };
+		8E8134051B101F2400C026D5 /* wronghara.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133EC1B101F2400C026D5 /* wronghara.wav */; };
+		8E8134061B101F2400C026D5 /* wrongkaala.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133ED1B101F2400C026D5 /* wrongkaala.wav */; };
+		8E8134071B101F2400C026D5 /* wronglaal.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133EE1B101F2400C026D5 /* wronglaal.wav */; };
+		8E8134081B101F2400C026D5 /* wrongneela.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133EF1B101F2400C026D5 /* wrongneela.wav */; };
+		8E8134091B101F2400C026D5 /* wrongpeela.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133F01B101F2400C026D5 /* wrongpeela.wav */; };
+		8E81340A1B101F2400C026D5 /* wrongsafed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133F11B101F2400C026D5 /* wrongsafed.wav */; };
+		8E8134101B13E44100C026D5 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81340F1B13E44100C026D5 /* GameData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +89,45 @@
 		8E3D08001B0578970077D7FD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8E3D08021B05789F0077D7FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8E3D08041B0578A60077D7FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8E57BAC91B0BF1F700E1B96C /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		8E57BACF1B0C095300E1B96C /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		8E57BAD01B0C095300E1B96C /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		8E5FCA871B0B040400B54DA3 /* TrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainViewController.h; sourceTree = "<group>"; };
+		8E5FCA881B0B040400B54DA3 /* TrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainViewController.m; sourceTree = "<group>"; };
+		8E5FCA8A1B0B048600B54DA3 /* WordScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordScene.h; sourceTree = "<group>"; };
+		8E5FCA8B1B0B048600B54DA3 /* WordScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordScene.m; sourceTree = "<group>"; };
 		8E6984A41B06C71200942049 /* OyeKiddoColorGame-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OyeKiddoColorGame-Bridging-Header.h"; sourceTree = "<group>"; };
-		8E6984A51B06C71300942049 /* TrainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainViewController.swift; sourceTree = "<group>"; };
-		8E6984A71B06C74100942049 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
-		8E6984AD1B06FEBC00942049 /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
-		8E6984AF1B06FEFC00942049 /* TrainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainScene.swift; sourceTree = "<group>"; };
+		8E8133D91B101F2400C026D5 /* canYouTellMe.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = canYouTellMe.wav; path = Audio/canYouTellMe.wav; sourceTree = "<group>"; };
+		8E8133DA1B101F2400C026D5 /* canYouTellMe2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = canYouTellMe2.wav; path = Audio/canYouTellMe2.wav; sourceTree = "<group>"; };
+		8E8133DB1B101F2400C026D5 /* didntgethara.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = didntgethara.wav; path = Audio/didntgethara.wav; sourceTree = "<group>"; };
+		8E8133DC1B101F2400C026D5 /* didntgetkala.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = didntgetkala.wav; path = Audio/didntgetkala.wav; sourceTree = "<group>"; };
+		8E8133DD1B101F2400C026D5 /* didntgetlaal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = didntgetlaal.wav; path = Audio/didntgetlaal.wav; sourceTree = "<group>"; };
+		8E8133DE1B101F2400C026D5 /* didntgetneela.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = didntgetneela.wav; path = Audio/didntgetneela.wav; sourceTree = "<group>"; };
+		8E8133DF1B101F2400C026D5 /* didntgetpeela.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = didntgetpeela.wav; path = Audio/didntgetpeela.wav; sourceTree = "<group>"; };
+		8E8133E01B101F2400C026D5 /* didntgetsafed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = didntgetsafed.wav; path = Audio/didntgetsafed.wav; sourceTree = "<group>"; };
+		8E8133E11B101F2400C026D5 /* hara.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hara.wav; path = Audio/hara.wav; sourceTree = "<group>"; };
+		8E8133E21B101F2400C026D5 /* kala.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kala.wav; path = Audio/kala.wav; sourceTree = "<group>"; };
+		8E8133E31B101F2400C026D5 /* kala2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = kala2.wav; path = Audio/kala2.wav; sourceTree = "<group>"; };
+		8E8133E41B101F2400C026D5 /* laal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = laal.wav; path = Audio/laal.wav; sourceTree = "<group>"; };
+		8E8133E51B101F2400C026D5 /* neela.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = neela.wav; path = Audio/neela.wav; sourceTree = "<group>"; };
+		8E8133E61B101F2400C026D5 /* peela2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = peela2.wav; path = Audio/peela2.wav; sourceTree = "<group>"; };
+		8E8133E71B101F2400C026D5 /* right.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right.wav; path = Audio/right.wav; sourceTree = "<group>"; };
+		8E8133E81B101F2400C026D5 /* right2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right2.wav; path = Audio/right2.wav; sourceTree = "<group>"; };
+		8E8133E91B101F2400C026D5 /* right3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right3.wav; path = Audio/right3.wav; sourceTree = "<group>"; };
+		8E8133EA1B101F2400C026D5 /* right4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = right4.wav; path = Audio/right4.wav; sourceTree = "<group>"; };
+		8E8133EB1B101F2400C026D5 /* safed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = safed.wav; path = Audio/safed.wav; sourceTree = "<group>"; };
+		8E8133EC1B101F2400C026D5 /* wronghara.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wronghara.wav; path = Audio/wronghara.wav; sourceTree = "<group>"; };
+		8E8133ED1B101F2400C026D5 /* wrongkaala.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrongkaala.wav; path = Audio/wrongkaala.wav; sourceTree = "<group>"; };
+		8E8133EE1B101F2400C026D5 /* wronglaal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wronglaal.wav; path = Audio/wronglaal.wav; sourceTree = "<group>"; };
+		8E8133EF1B101F2400C026D5 /* wrongneela.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrongneela.wav; path = Audio/wrongneela.wav; sourceTree = "<group>"; };
+		8E8133F01B101F2400C026D5 /* wrongpeela.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrongpeela.wav; path = Audio/wrongpeela.wav; sourceTree = "<group>"; };
+		8E8133F11B101F2400C026D5 /* wrongsafed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wrongsafed.wav; path = Audio/wrongsafed.wav; sourceTree = "<group>"; };
+		8E81340E1B13E44100C026D5 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
+		8E81340F1B13E44100C026D5 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
+		8E8134111B13F65A00C026D5 /* TrainViewState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrainViewState.h; sourceTree = "<group>"; };
+		8E8134121B14DCC400C026D5 /* WordType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E5FCA811B0AB25000B54DA3 /* SpriteKit.framework in Frameworks */,
 				8E3D07F91B0578700077D7FD /* SpeechKit.framework in Frameworks */,
 				8E3D07FD1B0578820077D7FD /* Foundation.framework in Frameworks */,
 				8E3D07F51B0578570077D7FD /* UIKit.framework in Frameworks */,
@@ -118,14 +180,23 @@
 		8E3D07BA1B05775D0077D7FD /* OyeKiddoColorGame */ = {
 			isa = PBXGroup;
 			children = (
+				8E8133D81B10171E00C026D5 /* Audio */,
 				8E3D07BF1B05775D0077D7FD /* AppDelegate.h */,
 				8E3D07C01B05775D0077D7FD /* AppDelegate.m */,
+				8E81340E1B13E44100C026D5 /* GameData.h */,
+				8E81340F1B13E44100C026D5 /* GameData.m */,
 				8E3D07C21B05775D0077D7FD /* ViewController.h */,
 				8E3D07C31B05775D0077D7FD /* ViewController.m */,
-				8E6984AF1B06FEFC00942049 /* TrainScene.swift */,
-				8E6984A51B06C71300942049 /* TrainViewController.swift */,
-				8E6984AD1B06FEBC00942049 /* PlayScene.swift */,
-				8E6984A71B06C74100942049 /* PlayViewController.swift */,
+				8E5FCA871B0B040400B54DA3 /* TrainViewController.h */,
+				8E5FCA881B0B040400B54DA3 /* TrainViewController.m */,
+				8E8134111B13F65A00C026D5 /* TrainViewState.h */,
+				8E57BAC91B0BF1F700E1B96C /* PlayViewController.h */,
+				8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */,
+				8E5FCA8A1B0B048600B54DA3 /* WordScene.h */,
+				8E5FCA8B1B0B048600B54DA3 /* WordScene.m */,
+				8E8134121B14DCC400C026D5 /* WordType.h */,
+				8E57BACF1B0C095300E1B96C /* Word.h */,
+				8E57BAD01B0C095300E1B96C /* Word.m */,
 				8E3D07C51B05775D0077D7FD /* Main.storyboard */,
 				8E3D07C81B05775D0077D7FD /* Images.xcassets */,
 				8E3D07CA1B05775D0077D7FD /* LaunchScreen.xib */,
@@ -164,6 +235,7 @@
 		8E3D07F31B0578250077D7FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */,
 				8E3D08041B0578A60077D7FD /* AudioToolbox.framework */,
 				8E3D08021B05789F0077D7FD /* AVFoundation.framework */,
 				8E3D08001B0578970077D7FD /* CFNetwork.framework */,
@@ -175,6 +247,38 @@
 				8E3D07F41B0578570077D7FD /* UIKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E8133D81B10171E00C026D5 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				8E8133D91B101F2400C026D5 /* canYouTellMe.wav */,
+				8E8133DA1B101F2400C026D5 /* canYouTellMe2.wav */,
+				8E8133DB1B101F2400C026D5 /* didntgethara.wav */,
+				8E8133DC1B101F2400C026D5 /* didntgetkala.wav */,
+				8E8133DD1B101F2400C026D5 /* didntgetlaal.wav */,
+				8E8133DE1B101F2400C026D5 /* didntgetneela.wav */,
+				8E8133DF1B101F2400C026D5 /* didntgetpeela.wav */,
+				8E8133E01B101F2400C026D5 /* didntgetsafed.wav */,
+				8E8133E11B101F2400C026D5 /* hara.wav */,
+				8E8133E21B101F2400C026D5 /* kala.wav */,
+				8E8133E31B101F2400C026D5 /* kala2.wav */,
+				8E8133E41B101F2400C026D5 /* laal.wav */,
+				8E8133E51B101F2400C026D5 /* neela.wav */,
+				8E8133E61B101F2400C026D5 /* peela2.wav */,
+				8E8133E71B101F2400C026D5 /* right.wav */,
+				8E8133E81B101F2400C026D5 /* right2.wav */,
+				8E8133E91B101F2400C026D5 /* right3.wav */,
+				8E8133EA1B101F2400C026D5 /* right4.wav */,
+				8E8133EB1B101F2400C026D5 /* safed.wav */,
+				8E8133EC1B101F2400C026D5 /* wronghara.wav */,
+				8E8133ED1B101F2400C026D5 /* wrongkaala.wav */,
+				8E8133EE1B101F2400C026D5 /* wronglaal.wav */,
+				8E8133EF1B101F2400C026D5 /* wrongneela.wav */,
+				8E8133F01B101F2400C026D5 /* wrongpeela.wav */,
+				8E8133F11B101F2400C026D5 /* wrongsafed.wav */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,9 +361,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8133FD1B101F2400C026D5 /* laal.wav in Resources */,
+				8E8133FF1B101F2400C026D5 /* peela2.wav in Resources */,
+				8E8133FA1B101F2400C026D5 /* hara.wav in Resources */,
+				8E8134001B101F2400C026D5 /* right.wav in Resources */,
+				8E8133F51B101F2400C026D5 /* didntgetkala.wav in Resources */,
+				8E8134011B101F2400C026D5 /* right2.wav in Resources */,
+				8E8133F61B101F2400C026D5 /* didntgetlaal.wav in Resources */,
+				8E8134031B101F2400C026D5 /* right4.wav in Resources */,
 				8E3D07C71B05775D0077D7FD /* Main.storyboard in Resources */,
+				8E8134071B101F2400C026D5 /* wronglaal.wav in Resources */,
+				8E8134061B101F2400C026D5 /* wrongkaala.wav in Resources */,
 				8E3D07CC1B05775D0077D7FD /* LaunchScreen.xib in Resources */,
+				8E8134041B101F2400C026D5 /* safed.wav in Resources */,
+				8E8133F21B101F2400C026D5 /* canYouTellMe.wav in Resources */,
+				8E81340A1B101F2400C026D5 /* wrongsafed.wav in Resources */,
+				8E8134091B101F2400C026D5 /* wrongpeela.wav in Resources */,
+				8E8133F31B101F2400C026D5 /* canYouTellMe2.wav in Resources */,
 				8E3D07C91B05775D0077D7FD /* Images.xcassets in Resources */,
+				8E8134081B101F2400C026D5 /* wrongneela.wav in Resources */,
+				8E8133F81B101F2400C026D5 /* didntgetpeela.wav in Resources */,
+				8E8133FE1B101F2400C026D5 /* neela.wav in Resources */,
+				8E8133F91B101F2400C026D5 /* didntgetsafed.wav in Resources */,
+				8E8133FC1B101F2400C026D5 /* kala2.wav in Resources */,
+				8E8133FB1B101F2400C026D5 /* kala.wav in Resources */,
+				8E8133F71B101F2400C026D5 /* didntgetneela.wav in Resources */,
+				8E8133F41B101F2400C026D5 /* didntgethara.wav in Resources */,
+				8E8134051B101F2400C026D5 /* wronghara.wav in Resources */,
+				8E8134021B101F2400C026D5 /* right3.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,13 +406,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8134101B13E44100C026D5 /* GameData.m in Sources */,
 				8E3D07C41B05775D0077D7FD /* ViewController.m in Sources */,
-				8E6984B01B06FEFC00942049 /* TrainScene.swift in Sources */,
-				8E6984A81B06C74100942049 /* PlayViewController.swift in Sources */,
-				8E6984A61B06C71300942049 /* TrainViewController.swift in Sources */,
 				8E3D07C11B05775D0077D7FD /* AppDelegate.m in Sources */,
-				8E6984AE1B06FEBC00942049 /* PlayScene.swift in Sources */,
+				8E5FCA891B0B040400B54DA3 /* TrainViewController.m in Sources */,
 				8E3D07BE1B05775D0077D7FD /* main.m in Sources */,
+				8E57BACB1B0BF1F700E1B96C /* PlayViewController.m in Sources */,
+				8E5FCA8C1B0B048600B54DA3 /* WordScene.m in Sources */,
+				8E57BAD11B0C095300E1B96C /* Word.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +475,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -389,6 +520,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

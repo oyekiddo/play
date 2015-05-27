@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n8x-rN-DQZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n8x-rN-DQZ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -33,9 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr2-AM-Mnd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr2-AM-Mnd">
                                 <rect key="frame" x="162" y="215" width="277" height="44"/>
-                                <state key="normal" title="Train" backgroundImage="Button">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5VK-4k-4w0"/>
+                                    <constraint firstAttribute="width" constant="277" id="lVG-sY-fRg"/>
+                                </constraints>
+                                <state key="normal" title="Learn Colors" backgroundImage="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -44,7 +47,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEz-qK-IyM">
                                 <rect key="frame" x="162" y="390" width="277" height="44"/>
-                                <state key="normal" title="Play" backgroundImage="Button">
+                                <state key="normal" title="Practice Colors" backgroundImage="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -54,10 +57,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="9q6-c1-Z4t"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PEz-qK-IyM" secondAttribute="trailing" constant="40" id="YkE-OA-qef"/>
-                            <constraint firstItem="PEz-qK-IyM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="bfr-5O-bbZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Pr2-AM-Mnd" secondAttribute="trailing" constant="40" id="ryj-MI-JnP"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DuQ-YF-m6M"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="trailing" secondItem="PEz-qK-IyM" secondAttribute="trailing" id="HLd-hO-w1d"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="151" id="LnG-xA-bvp"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="leading" secondItem="PEz-qK-IyM" secondAttribute="leading" id="n6h-hF-2NL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HRT-zY-hq5"/>
@@ -68,12 +71,12 @@
         <!--Train View Controller-->
         <scene sceneID="EV1-Wr-7rR">
             <objects>
-                <viewController storyboardIdentifier="trainView" id="6JA-DK-mm8" userLabel="Train View Controller" customClass="TrainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trainViewController" id="6JA-DK-mm8" userLabel="Train View Controller" customClass="TrainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Wx-Kh-cuW"/>
                         <viewControllerLayoutGuide type="bottom" id="RtV-81-fnS"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Hgs-wr-QKU">
+                    <view key="view" contentMode="scaleToFill" id="Hgs-wr-QKU" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,17 +84,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cM-1P-Dzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="247"/>
+            <point key="canvasLocation" x="1087" y="239"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="Gm8-Gy-sVK">
             <objects>
-                <viewController storyboardIdentifier="playView" id="PgF-zw-4Dh" userLabel="Play View Controller" customClass="PlayViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="playViewController" id="PgF-zw-4Dh" userLabel="Play View Controller" customClass="PlayViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fNA-mo-CKh"/>
                         <viewControllerLayoutGuide type="bottom" id="RWC-iK-Vu4"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9YV-it-w3s">
+                    <view key="view" contentMode="scaleToFill" id="9YV-it-w3s" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kka-b1-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1683" y="247"/>
+            <point key="canvasLocation" x="1720" y="239"/>
         </scene>
     </scenes>
     <resources>
