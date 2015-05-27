@@ -75,7 +75,7 @@
   trainViewState = START_LESSON;
   word = [[Word alloc] init:(WordType) lessonNumber ];
   [wordScene addWordToScene: word.labeledName];
-  [wordScene setMessageText:@"Please Wait"];
+  [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
   [canYouSaySounds[lessonNumber] play];
 }
 
@@ -99,12 +99,12 @@
 
 - (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
 {
-  [wordScene setMessageText:@"Speak Now"];
+  [wordScene setMessageText:@"Speak Now" color:[SKColor greenColor]];
 }
 
 - (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
 {
-  [wordScene setMessageText:@""];
+  [wordScene setMessageText:@"" color:[SKColor redColor]];
 }
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
@@ -119,7 +119,7 @@
     wordDictionary = [NSMutableDictionary dictionary];
     [GameData sharedData].dict[lessonNumber] = wordDictionary;
     [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:hindiName];
-    NSLog([NSString stringWithFormat:@"adding key %@", hindiName]);
+//    NSLog([NSString stringWithFormat:@"adding key %@", hindiName]);
   } else {
     wordDictionary = [GameData sharedData].dict[lessonNumber];
   }
@@ -131,9 +131,9 @@
     NSString *sentence = results.results[i];
     NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for( NSString *w in words ) {
-      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
+//      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
       for( NSString *w2 in wordDictionary ) {
-        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
+//        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
         if( [w compare: w2] == NSOrderedSame ) {
           NSLog(@"found");
           found = true;
@@ -152,16 +152,17 @@
           NSNumber *num = [wordDictionary objectForKey:w];
           num = @(num.integerValue + 1);
           [wordDictionary setObject:num forKey:w];
-          NSLog([NSString stringWithFormat:@"incrementing key %@ to value %d", w, num.integerValue]);
+//          NSLog([NSString stringWithFormat:@"incrementing key %@ to value %d", w, num.integerValue]);
         } else {
           [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:w];
-          NSLog([NSString stringWithFormat:@"adding key %@", w]);
+//          NSLog([NSString stringWithFormat:@"adding key %@", w]);
         }
       }
     }
+    [[GameData sharedData] save];
     trainViewState = DIDNT_RECOGNIZE;
     voiceSearch = nil;
-    [wordScene setMessageText:@"Please Wait"];
+    [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
     [didntGetSounds[lessonNumber] play];
   } else {
     trainViewState = RECOGNIZED;
@@ -181,7 +182,7 @@
 {
   trainViewState = FAILED_RECORDING;
   voiceSearch = nil;
-  [wordScene setMessageText:@"Please Wait"];
+  [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
   [didntGetSounds[lessonNumber] play];
 }
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GameData : NSObject
+@interface GameData : NSObject <NSCoding>
 
 @property (assign, nonatomic) long score;
 
@@ -18,5 +18,6 @@
 
 +(instancetype)sharedData;
 -(void)reset;
+-(void)save;
 
 @end

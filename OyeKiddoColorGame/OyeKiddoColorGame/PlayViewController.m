@@ -52,6 +52,8 @@
                           ];
     [rightWordSounds[i] setDelegate:self];
   }
+  [[GameData sharedData] save];
+  [[GameData sharedData] reset];
   trainViewState = IDLE;
   [self generateWord];
 }
@@ -79,7 +81,7 @@
   trainViewState = GENERATE_WORD;
   word = [[Word alloc] initRandom];
   [wordScene addWordToScene: word.name];
-  [wordScene setMessageText:@"Please Wait"];
+  [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
   [canYouTellMeSounds[[NSNumber numberWithInt:arc4random_uniform(2)].integerValue] play];
 }
 
@@ -96,10 +98,12 @@
                                               delegate:self];
       break;
     case RECOGNIZED:
+      [ wordScene removeWordFromScene ];
       [self generateWord];
       break;
     case DIDNT_RECOGNIZE:
     case FAILED_RECORDING:
+      [ wordScene removeWordFromScene ];
       [[self navigationController] popToRootViewControllerAnimated:true];
       break;
     default:
@@ -109,12 +113,12 @@
 
 - (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
 {
-  [wordScene setMessageText:@"Speak Now"];
+  [wordScene setMessageText:@"Speak Now" color:[SKColor greenColor]];
 }
 
 - (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
 {
-  [wordScene setMessageText:@""];
+  [wordScene setMessageText:@"" color:[SKColor redColor]];
 }
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
@@ -133,9 +137,9 @@
       NSString *sentence = results.results[i];
       NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       for( NSString *w in words ) {
-        NSLog([NSString stringWithFormat:@"TESTING %@", w]);
+//        NSLog([NSString stringWithFormat:@"TESTING %@", w]);
         for( NSString *w2 in wordDictionary ) {
-          NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
+//          NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
           if( [w compare: w2] == NSOrderedSame ) {
             NSLog(@"found");
             found = true;
@@ -151,6 +155,23 @@
       [ wrongWordSounds[ (int) word.wordType ] play];
     } else {
       trainViewState = RECOGNIZED;
+      for( int i = 0; i < numResults; i++ ) {
+        NSString *sentence = results.results[i];
+        NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        for( NSString *w in words ) {
+          if( [wordDictionary objectForKey:w]) {
+            NSNumber *num = [wordDictionary objectForKey:w];
+            num = @(num.integerValue + 1);
+            [wordDictionary setObject:num forKey:w];
+            //          NSLog([NSString stringWithFormat:@"incrementing key %@ to value %d", w, num.integerValue]);
+          } else {
+            [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:w];
+            //          NSLog([NSString stringWithFormat:@"adding key %@", w]);
+          }
+        }
+      }
+      [ wordScene incrementScore];
+      [[GameData sharedData] save];
       [ rightWordSounds[ [NSNumber numberWithInt:arc4random_uniform(4)].integerValue ] play];
     }
   } else {

@@ -20,6 +20,7 @@
 -(void) removeWordFromScene;
 -(void) setupHUD;
 -(void) setupMessage;
--(void) setMessageText:(NSString *) message;
+-(void) setMessageText:(NSString *) message color:(SKColor*) fontColor;
+-(void) incrementScore;
 
 @end

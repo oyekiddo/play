@@ -85,9 +85,10 @@ SKLabelNode* _speak;
   [self addChild:_speak];
 }
 
--(void) setMessageText:(NSString *) message
+-(void) setMessageText:(NSString *) message color:(SKColor*) fontColor
 {
   _speak.text = message;
+  _speak.fontColor = fontColor;
 }
 
 @end
