@@ -17,6 +17,8 @@
   PlayViewController *playViewController;
   WordScene *wordScene;
   Word *word;
+  long rightWordIndex;
+  long canYouTellIndex;
 
   AVAudioPlayer *canYouTellMeSounds[2];
   AVAudioPlayer *wrongWordSounds[6];
@@ -25,6 +27,8 @@
   SKRecognizer* voiceSearch;
 
   TrainViewState trainViewState;
+  
+  NSNumber *one;
 };
 
 @property (nonatomic,retain) PlayViewController *playViewController;

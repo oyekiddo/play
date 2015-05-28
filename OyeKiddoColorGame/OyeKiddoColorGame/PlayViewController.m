@@ -15,6 +15,7 @@
 -(void) viewDidLoad
 {
   [super viewDidLoad];
+  one = [NSNumber numberWithInt:1];
   
   playViewController = (PlayViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"playViewController"];
   SKView *skView = (SKView *) self.view;
@@ -71,6 +72,8 @@
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   [wrongWordSounds[ (int) word.wordType ] stop];
+  [canYouTellMeSounds[ canYouTellIndex ] stop];
+  [rightWordSounds[ rightWordIndex ] stop];
   if (voiceSearch != nil ) {
     [voiceSearch cancel];
     voiceSearch = nil;
@@ -82,7 +85,8 @@
   word = [[Word alloc] initRandom];
   [wordScene addWordToScene: word.name];
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
-  [canYouTellMeSounds[[NSNumber numberWithInt:arc4random_uniform(2)].integerValue] play];
+  canYouTellIndex = [NSNumber numberWithInt:arc4random_uniform(2)].integerValue;
+  [ canYouTellMeSounds[ canYouTellIndex ] play];
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -123,15 +127,12 @@
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
-  NSLog(@"Got results.");
-  NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
-  
   NSArray *dict = [GameData sharedData].dict;
   NSMutableDictionary *wordDictionary = dict[ (int) word.wordType ];
   long numResults = [results.results count];
   
   Boolean found = false;
-  NSLog(@"Got Here numResults = %ld", numResults );
+//  NSLog(@"Got Here numResults = %ld", numResults );
   if( numResults != 0 ) {
     for( int i = 0; i < numResults; i++ ) {
       NSString *sentence = results.results[i];
@@ -141,7 +142,7 @@
         for( NSString *w2 in wordDictionary ) {
 //          NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
           if( [w compare: w2] == NSOrderedSame ) {
-            NSLog(@"found");
+//            NSLog(@"found");
             found = true;
             break;
           }
@@ -165,18 +166,20 @@
             [wordDictionary setObject:num forKey:w];
             //          NSLog([NSString stringWithFormat:@"incrementing key %@ to value %d", w, num.integerValue]);
           } else {
-            [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:w];
+            [wordDictionary setObject:one forKey:w];
             //          NSLog([NSString stringWithFormat:@"adding key %@", w]);
           }
         }
       }
       [ wordScene incrementScore];
       [[GameData sharedData] save];
-      [ rightWordSounds[ [NSNumber numberWithInt:arc4random_uniform(4)].integerValue ] play];
+      rightWordIndex = [NSNumber numberWithInt:arc4random_uniform(4)].integerValue;
+      [ rightWordSounds[ rightWordIndex ] play];
     }
   } else {
     trainViewState = ZERO_RESULTS;
-    [ canYouTellMeSounds[[NSNumber numberWithInt:arc4random_uniform(2)].integerValue ] play];
+    canYouTellIndex = [NSNumber numberWithInt:arc4random_uniform(2)].integerValue;
+    [ canYouTellMeSounds[ canYouTellIndex ] play];
   }
 }
 

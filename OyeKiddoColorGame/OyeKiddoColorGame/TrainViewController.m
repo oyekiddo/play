@@ -109,9 +109,6 @@
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
-  NSLog(@"Got results.");
-  NSLog(@"Session id [%@].", [SpeechKit sessionID]); // for debugging purpose: printing out the speechkit session id
- 
   NSString *hindiName = word.hindiName;
   NSArray *dict = [GameData sharedData].dict;
   NSMutableDictionary *wordDictionary;
@@ -126,7 +123,7 @@
   long numResults = [results.results count];
   
   Boolean found = false;
-  NSLog(@"Got Here numResults = %ld", numResults );
+//  NSLog(@"Got Here numResults = %ld", numResults );
   for( int i = 0; i < numResults; i++ ) {
     NSString *sentence = results.results[i];
     NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -135,7 +132,7 @@
       for( NSString *w2 in wordDictionary ) {
 //        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
         if( [w compare: w2] == NSOrderedSame ) {
-          NSLog(@"found");
+//          NSLog(@"found");
           found = true;
           break;
         }
