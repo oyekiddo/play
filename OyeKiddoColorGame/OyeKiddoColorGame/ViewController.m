@@ -75,7 +75,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
   NSArray *dict = [GameData sharedData].dict;
   int count = numWords;
   if( dict.count < count ) {
-    [GameData sharedData].dict = [[NSMutableArray alloc] initWithArray: @[
+    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithArray: @[
                                                                           @{
                                                                             @"\u0906\u0913": [NSNumber numberWithInt: 1],
                                                                             @"\u0915\u094d\u0932\u093e\u0909\u0921": [NSNumber numberWithInt: 1],
@@ -185,6 +185,9 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                                                                             }
                                                                           ]
                                   ];
+    for( int i; i < tempArray.count; i++ ) {
+      [GameData sharedData].dict[i] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
+    }
   }
 }
 

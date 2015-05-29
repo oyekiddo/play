@@ -68,7 +68,7 @@
 
 /* Begin PBXFileReference section */
 		8E3D07B81B05775D0077D7FD /* OyeKiddoColorGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OyeKiddoColorGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E3D07BC1B05775D0077D7FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E3D07BC1B05775D0077D7FD /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		8E3D07BD1B05775D0077D7FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E3D07BF1B05775D0077D7FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E3D07C01B05775D0077D7FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		8E3D07BB1B05775D0077D7FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8E3D07BC1B05775D0077D7FD /* Info.plist */,
+				8E3D07BC1B05775D0077D7FD /* info.plist */,
 				8E3D07BD1B05775D0077D7FD /* main.m */,
 			);
 			name = "Supporting Files";
@@ -331,6 +331,14 @@
 					8E3D07B71B05775D0077D7FD = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 8J3N7724UD;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					8E3D07D01B05775D0077D7FD = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -546,6 +554,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
@@ -553,6 +562,7 @@
 				INFOPLIST_FILE = OyeKiddoColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OyeKiddoColorGame/OyeKiddoColorGame-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -564,6 +574,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
@@ -571,6 +582,7 @@
 				INFOPLIST_FILE = OyeKiddoColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OyeKiddoColorGame/OyeKiddoColorGame-Bridging-Header.h";
 			};
 			name = Release;
