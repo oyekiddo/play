@@ -557,7 +557,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
+					"$(SRCROOT)/../DragonMobileSDK_1.4.14",
 				);
 				INFOPLIST_FILE = OyeKiddoColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -577,7 +577,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/gregoryomi/dev/oyekiddo/play/DragonMobileSDK_1.4.14,
+					"$(SRCROOT)/../DragonMobileSDK_1.4.14",
 				);
 				INFOPLIST_FILE = OyeKiddoColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
