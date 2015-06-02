@@ -51,9 +51,9 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
 @synthesize trainButton, playButton, voiceSearch;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
+- (void)viewWillLayoutSubviews
 {
-  [super viewDidLoad];
+  [super viewWillLayoutSubviews];
   
   /**
    * The login parameters should be specified in the following manner:
@@ -185,6 +185,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                                                                             }
                                                                           ]
                                   ];
+    
     for( int i; i < tempArray.count; i++ ) {
       [GameData sharedData].dict[i] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
     }
