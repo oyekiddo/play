@@ -186,7 +186,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                                                                           ]
                                   ];
     
-    for( int i; i < tempArray.count; i++ ) {
+    for( int i=0; i < tempArray.count; i++ ) {
       [GameData sharedData].dict[i] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
     }
   }

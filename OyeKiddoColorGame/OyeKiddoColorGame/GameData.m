@@ -20,7 +20,7 @@ static NSString* const SSGameDataDictKey = @"dict";
   if (self) {
     _highScore = [decoder decodeDoubleForKey: SSGameDataHighScoreKey];
     NSArray *tempArray = [decoder decodeObjectForKey:SSGameDataDictKey];
-    for( int i; i < tempArray.count; i++ ) {
+    for( int i=0; i < tempArray.count; i++ ) {
       _dict[i] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
     }
   }
