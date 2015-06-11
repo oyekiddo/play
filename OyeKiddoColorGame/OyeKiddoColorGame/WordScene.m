@@ -7,7 +7,6 @@
 //
 
 #import "WordScene.h"
-#import "Word.h"
 #import "GameData.h"
 
 @implementation WordScene

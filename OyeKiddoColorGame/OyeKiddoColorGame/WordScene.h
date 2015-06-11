@@ -7,7 +7,6 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "Word.h"
 
 @interface WordScene : SKScene {
   CGSize viewSize;

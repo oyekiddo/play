@@ -22,9 +22,7 @@
 		8E3D07FF1B05788A0077D7FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07FE1B05788A0077D7FD /* CoreGraphics.framework */; };
 		8E3D08011B0578970077D7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08001B0578970077D7FD /* CFNetwork.framework */; };
 		8E3D08031B05789F0077D7FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08021B05789F0077D7FD /* AVFoundation.framework */; };
-		8E3D08051B0578A60077D7FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08041B0578A60077D7FD /* AudioToolbox.framework */; };
 		8E57BACB1B0BF1F700E1B96C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */; };
-		8E57BAD11B0C095300E1B96C /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57BAD01B0C095300E1B96C /* Word.m */; };
 		8E5FCA811B0AB25000B54DA3 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */; };
 		8E5FCA891B0B040400B54DA3 /* TrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCA881B0B040400B54DA3 /* TrainViewController.m */; };
 		8E5FCA8C1B0B048600B54DA3 /* WordScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCA8B1B0B048600B54DA3 /* WordScene.m */; };
@@ -54,6 +52,9 @@
 		8E8134091B101F2400C026D5 /* wrongpeela.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133F01B101F2400C026D5 /* wrongpeela.wav */; };
 		8E81340A1B101F2400C026D5 /* wrongsafed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E8133F11B101F2400C026D5 /* wrongsafed.wav */; };
 		8E8134101B13E44100C026D5 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81340F1B13E44100C026D5 /* GameData.m */; };
+		8E81EC881B2905740000149D /* Words.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81EC871B2905740000149D /* Words.m */; };
+		8E81EC8B1B29208D0000149D /* Sounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81EC8A1B29208D0000149D /* Sounds.m */; };
+		8E81EC8E1B29487B0000149D /* AudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E81EC8D1B29487B0000149D /* AudioPlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +92,6 @@
 		8E3D08041B0578A60077D7FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8E57BAC91B0BF1F700E1B96C /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
-		8E57BACF1B0C095300E1B96C /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		8E57BAD01B0C095300E1B96C /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		8E5FCA871B0B040400B54DA3 /* TrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainViewController.h; sourceTree = "<group>"; };
 		8E5FCA881B0B040400B54DA3 /* TrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainViewController.m; sourceTree = "<group>"; };
@@ -128,6 +127,12 @@
 		8E81340F1B13E44100C026D5 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
 		8E8134111B13F65A00C026D5 /* TrainViewState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrainViewState.h; sourceTree = "<group>"; };
 		8E8134121B14DCC400C026D5 /* WordType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordType.h; sourceTree = "<group>"; };
+		8E81EC861B2905740000149D /* Words.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Words.h; sourceTree = "<group>"; };
+		8E81EC871B2905740000149D /* Words.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Words.m; sourceTree = "<group>"; };
+		8E81EC891B29208D0000149D /* Sounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sounds.h; sourceTree = "<group>"; };
+		8E81EC8A1B29208D0000149D /* Sounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sounds.m; sourceTree = "<group>"; };
+		8E81EC8C1B29487B0000149D /* AudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerViewController.h; sourceTree = "<group>"; };
+		8E81EC8D1B29487B0000149D /* AudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +145,6 @@
 				8E3D07FD1B0578820077D7FD /* Foundation.framework in Frameworks */,
 				8E3D07F51B0578570077D7FD /* UIKit.framework in Frameworks */,
 				8E3D07FF1B05788A0077D7FD /* CoreGraphics.framework in Frameworks */,
-				8E3D08051B0578A60077D7FD /* AudioToolbox.framework in Frameworks */,
 				8E3D07F71B0578610077D7FD /* SystemConfiguration.framework in Frameworks */,
 				8E3D08031B05789F0077D7FD /* AVFoundation.framework in Frameworks */,
 				8E3D07FB1B05787B0077D7FD /* Security.framework in Frameworks */,
@@ -187,6 +191,8 @@
 				8E81340F1B13E44100C026D5 /* GameData.m */,
 				8E3D07C21B05775D0077D7FD /* ViewController.h */,
 				8E3D07C31B05775D0077D7FD /* ViewController.m */,
+				8E81EC8C1B29487B0000149D /* AudioPlayerViewController.h */,
+				8E81EC8D1B29487B0000149D /* AudioPlayerViewController.m */,
 				8E5FCA871B0B040400B54DA3 /* TrainViewController.h */,
 				8E5FCA881B0B040400B54DA3 /* TrainViewController.m */,
 				8E8134111B13F65A00C026D5 /* TrainViewState.h */,
@@ -195,8 +201,10 @@
 				8E5FCA8A1B0B048600B54DA3 /* WordScene.h */,
 				8E5FCA8B1B0B048600B54DA3 /* WordScene.m */,
 				8E8134121B14DCC400C026D5 /* WordType.h */,
-				8E57BACF1B0C095300E1B96C /* Word.h */,
-				8E57BAD01B0C095300E1B96C /* Word.m */,
+				8E81EC861B2905740000149D /* Words.h */,
+				8E81EC871B2905740000149D /* Words.m */,
+				8E81EC891B29208D0000149D /* Sounds.h */,
+				8E81EC8A1B29208D0000149D /* Sounds.m */,
 				8E3D07C51B05775D0077D7FD /* Main.storyboard */,
 				8E3D07C81B05775D0077D7FD /* Images.xcassets */,
 				8E3D07CA1B05775D0077D7FD /* LaunchScreen.xib */,
@@ -415,14 +423,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E81EC8E1B29487B0000149D /* AudioPlayerViewController.m in Sources */,
+				8E81EC881B2905740000149D /* Words.m in Sources */,
 				8E8134101B13E44100C026D5 /* GameData.m in Sources */,
 				8E3D07C41B05775D0077D7FD /* ViewController.m in Sources */,
 				8E3D07C11B05775D0077D7FD /* AppDelegate.m in Sources */,
 				8E5FCA891B0B040400B54DA3 /* TrainViewController.m in Sources */,
 				8E3D07BE1B05775D0077D7FD /* main.m in Sources */,
+				8E81EC8B1B29208D0000149D /* Sounds.m in Sources */,
 				8E57BACB1B0BF1F700E1B96C /* PlayViewController.m in Sources */,
 				8E5FCA8C1B0B048600B54DA3 /* WordScene.m in Sources */,
-				8E57BAD11B0C095300E1B96C /* Word.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,20 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <SpeechKit/SpeechKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "AudioPlayerViewController.h"
 #import "TrainViewState.h"
 #import "WordScene.h"
-#import "GameData.h"
 
-@interface PlayViewController : UIViewController <SpeechKitDelegate, SKRecognizerDelegate, UITextFieldDelegate, AVAudioPlayerDelegate> {
+@interface PlayViewController : AudioPlayerViewController <SpeechKitDelegate, SKRecognizerDelegate, UITextFieldDelegate, AVAudioPlayerDelegate> {
   PlayViewController *playViewController;
   WordScene *wordScene;
-  Word *word;
-  long rightWordIndex;
-  long canYouTellIndex;
-
-  AVAudioPlayer *canYouTellMeSounds[2];
-  AVAudioPlayer *wrongWordSounds[6];
-  AVAudioPlayer *rightWordSounds[4];
+  NSString *word;
 
   SKRecognizer* voiceSearch;
 

@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 GregoryOmi. All rights reserved.
 //
 
-#import "Word.h"
 #import "TrainViewController.h"
 #import "GameData.h"
+#import "WordType.h"
+#import "Words.h"
+#import "Sounds.h"
 
 @implementation TrainViewController
 
@@ -28,24 +30,8 @@
 
   [wordScene setupMessage];
   
-  NSArray *canYouSayFilenames = @[ @"laal", @"peela2", @"hara", @"neela", @"safed", @"kala2"];
-  NSArray *didntGetFilenames = @[ @"didntgetlaal", @"didntgetpeela", @"didntgethara", @"didntgetneela", @"didntgetsafed", @"didntgetkala"];
-  
-  WordType count = numWords;
-  for (int i = 0; i < (int) count; i++ ) {
-    canYouSaySounds[i] = [[AVAudioPlayer alloc]
-                          initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:canYouSayFilenames[i] ofType: @"wav" ]]
-                          error:nil
-                          ];
-    [canYouSaySounds[i] setDelegate:self];
-    didntGetSounds[i] = [[AVAudioPlayer alloc]
-                         initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:didntGetFilenames[i] ofType: @"wav" ]]
-                         error:nil
-                         ];
-    [didntGetSounds[i] setDelegate:self];
-  }
-
   lessonNumber = 0;
+  word = [Words sharedData].names[lessonNumber];
   trainViewState = IDLE;
   [self startLesson];
 }
@@ -62,8 +48,7 @@
 {
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
-  [canYouSaySounds[lessonNumber] stop];
-  [didntGetSounds[lessonNumber] stop];
+  [Sounds stop];
   if (voiceSearch != nil ) {
     [voiceSearch cancel];
     voiceSearch = nil;
@@ -73,10 +58,9 @@
 - (void) startLesson
 {
   trainViewState = START_LESSON;
-  word = [[Word alloc] init:(WordType) lessonNumber ];
-  [wordScene addWordToScene: word.labeledName];
+  [wordScene addWordToScene: [Words sharedData].labeledNames[lessonNumber]];
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
-  [canYouSaySounds[lessonNumber] play];
+  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouSaySounds[word] delegate:self ];
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -109,16 +93,14 @@
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
-  NSString *hindiName = word.hindiName;
-  NSArray *dict = [GameData sharedData].dict;
-  NSMutableDictionary *wordDictionary;
-  if( dict.count <= lessonNumber ) {
+  NSString *hindiName = [Words sharedData].hindiNames[lessonNumber];
+  NSMutableDictionary *dict = [GameData sharedData].dict;
+  NSMutableDictionary *wordDictionary = dict[word];
+  if( wordDictionary == nil ) {
     wordDictionary = [NSMutableDictionary dictionary];
-    [GameData sharedData].dict[lessonNumber] = wordDictionary;
     [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:hindiName];
+    [GameData sharedData].dict[word] = wordDictionary;
 //    NSLog([NSString stringWithFormat:@"adding key %@", hindiName]);
-  } else {
-    wordDictionary = [GameData sharedData].dict[lessonNumber];
   }
   long numResults = [results.results count];
   
@@ -160,13 +142,14 @@
     trainViewState = DIDNT_RECOGNIZE;
     voiceSearch = nil;
     [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
-    [didntGetSounds[lessonNumber] play];
+    [Sounds play:(AVAudioPlayer *)[Sounds sharedData].didntGetSounds[word] delegate:self ];
   } else {
     trainViewState = RECOGNIZED;
     WordType count = numWords;
     if( lessonNumber < (count - 1) ) {
       [wordScene removeWordFromScene];
       lessonNumber++;
+      word = [Words sharedData].names[lessonNumber];
       voiceSearch = nil;
       [self startLesson];
     } else {
@@ -180,7 +163,7 @@
   trainViewState = FAILED_RECORDING;
   voiceSearch = nil;
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
-  [didntGetSounds[lessonNumber] play];
+  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].didntGetSounds[word] delegate:self ];
 }
 
 @end

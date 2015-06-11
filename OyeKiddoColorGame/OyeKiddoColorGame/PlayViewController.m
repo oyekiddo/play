@@ -7,6 +7,10 @@
 //
 
 #import "PlayViewController.h"
+#import "GameData.h"
+#import "WordType.h"
+#import "Words.h"
+#import "Sounds.h"
 
 @implementation PlayViewController
 
@@ -28,31 +32,6 @@
   [wordScene setupHUD];
   [wordScene setupMessage];
 
-  NSArray *canYouTellMeFilenames = @[ @"canYouTellMe", @"canYouTellMe2"];
-  NSArray *wrongWordFilenames = @[ @"wronglaal", @"wrongpeela", @"wronghara", @"wrongneela", @"wrongsafed", @"wrongkaala"];
-  NSArray *rightWordFilenames = @[ @"right", @"right2", @"right3", @"right4"];
-
-  for (int i = 0; i < canYouTellMeFilenames.count; i++ ) {
-    canYouTellMeSounds[i] = [[AVAudioPlayer alloc]
-                          initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:canYouTellMeFilenames[i] ofType: @"wav" ]]
-                          error:nil
-                          ];
-    [canYouTellMeSounds[i] setDelegate:self];
-  }
-  for (int i = 0; i < wrongWordFilenames.count; i++ ) {
-    wrongWordSounds[i] = [[AVAudioPlayer alloc]
-                          initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:wrongWordFilenames[i] ofType: @"wav" ]]
-                          error:nil
-                          ];
-    [wrongWordSounds[i] setDelegate:self];
-  }
-  for (int i = 0; i < rightWordFilenames.count; i++ ) {
-    rightWordSounds[i] = [[AVAudioPlayer alloc]
-                          initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:rightWordFilenames[i] ofType: @"wav" ]]
-                          error:nil
-                          ];
-    [rightWordSounds[i] setDelegate:self];
-  }
   [[GameData sharedData] save];
   [[GameData sharedData] reset];
   trainViewState = IDLE;
@@ -71,9 +50,7 @@
 {
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
-  [wrongWordSounds[ (int) word.wordType ] stop];
-  [canYouTellMeSounds[ canYouTellIndex ] stop];
-  [rightWordSounds[ rightWordIndex ] stop];
+  [Sounds stop];
   if (voiceSearch != nil ) {
     [voiceSearch cancel];
     voiceSearch = nil;
@@ -82,11 +59,11 @@
 - (void) generateWord
 {
   trainViewState = GENERATE_WORD;
-  word = [[Word alloc] initRandom];
-  [wordScene addWordToScene: word.name];
+  word = [Words random];
+  [wordScene addWordToScene: word];
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
-  canYouTellIndex = [NSNumber numberWithInt:arc4random_uniform(2)].integerValue;
-  [ canYouTellMeSounds[ canYouTellIndex ] play];
+  long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].canYouTellMeSounds.count)].integerValue;
+  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
@@ -127,8 +104,8 @@
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
-  NSArray *dict = [GameData sharedData].dict;
-  NSMutableDictionary *wordDictionary = dict[ (int) word.wordType ];
+  NSMutableDictionary *dict = [GameData sharedData].dict;
+  NSMutableDictionary *wordDictionary = dict[ word ];
   long numResults = [results.results count];
   
   Boolean found = false;
@@ -153,7 +130,7 @@
     if( !found ) {
       trainViewState = DIDNT_RECOGNIZE;
       voiceSearch = nil;
-      [ wrongWordSounds[ (int) word.wordType ] play];
+      [Sounds play:(AVAudioPlayer *)[Sounds sharedData].wrongWordSounds[ word ] delegate:self ];
     } else {
       trainViewState = RECOGNIZED;
       for( int i = 0; i < numResults; i++ ) {
@@ -173,13 +150,13 @@
       }
       [ wordScene incrementScore];
       [[GameData sharedData] save];
-      rightWordIndex = [NSNumber numberWithInt:arc4random_uniform(4)].integerValue;
-      [ rightWordSounds[ rightWordIndex ] play];
+      long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].rightWordSounds.count)].integerValue;
+      [Sounds play:(AVAudioPlayer *)[Sounds sharedData].rightWordSounds[ index ] delegate:self ];
     }
   } else {
     trainViewState = ZERO_RESULTS;
-    canYouTellIndex = [NSNumber numberWithInt:arc4random_uniform(2)].integerValue;
-    [ canYouTellMeSounds[ canYouTellIndex ] play];
+    long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].canYouTellMeSounds.count)].integerValue;
+    [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];
   }
 }
 
@@ -187,7 +164,7 @@
 {
   trainViewState = FAILED_RECORDING;
   voiceSearch = nil;
-  [ wrongWordSounds[ (int) word.wordType ] play];
+  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].wrongWordSounds[ word ] delegate:self ];
 }
 
 @end

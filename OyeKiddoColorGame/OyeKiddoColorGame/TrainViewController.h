@@ -9,17 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <SpeechKit/SpeechKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "AudioPlayerViewController.h"
 #import "WordScene.h"
 #import "TrainViewState.h"
 
-@interface TrainViewController : UIViewController <SpeechKitDelegate, SKRecognizerDelegate, UITextFieldDelegate, AVAudioPlayerDelegate> {
+@interface TrainViewController : AudioPlayerViewController <SpeechKitDelegate, SKRecognizerDelegate, UITextFieldDelegate, AVAudioPlayerDelegate> {
   TrainViewController *trainViewController;
   WordScene *wordScene;
-  Word *word;
   int lessonNumber;
-  
-  AVAudioPlayer *canYouSaySounds[6];
-  AVAudioPlayer *didntGetSounds[6];
+  NSString *word;
   
   SKRecognizer* voiceSearch;
 

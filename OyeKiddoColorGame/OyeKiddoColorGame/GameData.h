@@ -14,7 +14,7 @@
 
 // persistant data
 @property (assign, nonatomic) long highScore;
-@property (retain, nonatomic) NSMutableArray *dict;
+@property (retain, nonatomic) NSMutableDictionary *dict;
 
 +(instancetype)sharedData;
 -(void)reset;

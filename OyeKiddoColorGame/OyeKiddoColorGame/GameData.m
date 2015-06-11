@@ -19,9 +19,9 @@ static NSString* const SSGameDataDictKey = @"dict";
   self = [self init];
   if (self) {
     _highScore = [decoder decodeDoubleForKey: SSGameDataHighScoreKey];
-    NSArray *tempArray = [decoder decodeObjectForKey:SSGameDataDictKey];
-    for( int i=0; i < tempArray.count; i++ ) {
-      _dict[i] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
+    NSDictionary *tempDictionary = [decoder decodeObjectForKey:SSGameDataDictKey];
+    for( NSString *key in tempDictionary ) {
+      _dict[key] = [[NSMutableDictionary alloc] initWithDictionary:tempDictionary[key]];
     }
   }
   return self;
@@ -38,7 +38,7 @@ static NSString* const SSGameDataDictKey = @"dict";
   static id sharedInstance = nil;
   
   static dispatch_once_t onceToken;
-  dispatch_once( &onceToken, ^{ sharedInstance = [self loadInstance];; } );
+  dispatch_once( &onceToken, ^{ sharedInstance = [self loadInstance]; } );
   
   return sharedInstance;
 }
@@ -47,9 +47,7 @@ static NSString* const SSGameDataDictKey = @"dict";
 {
   static NSString* filePath = nil;
   if (!filePath) {
-    filePath =
-    [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
-     stringByAppendingPathComponent:@"gamedata"];
+    filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"gamedata"];
   }
   return filePath;
 }
@@ -67,21 +65,20 @@ static NSString* const SSGameDataDictKey = @"dict";
 
 -(void)save
 {
+  NSLog( @"%@", [GameData sharedData].dict );
   NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
   [encodedData writeToFile:[GameData filePath] atomically:YES];
-  NSLog( @"%@", [self dict] );
 }
 
 -(id) init
 {
-  int capacity = (int) numWords;
-  self.dict = [[NSMutableArray alloc] initWithCapacity:(int) capacity];
+  self.dict = [[NSMutableDictionary alloc] init];
   self.highScore = 0;
   return self;
 }
 
 -(void)reset
 {
-  self.score = 0;
+  [GameData sharedData].score = 0;
 }
 @end

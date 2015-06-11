@@ -27,6 +27,7 @@
 #import "PlayViewController.h"
 #import "TrainViewController.h"
 #import "GameData.h"
+#import "Words.h"
 
 /**
  * The login parameters should be specified in the following manner:
@@ -72,122 +73,123 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                     port:443
                   useSSL:NO
                 delegate:nil];
-  NSArray *dict = [GameData sharedData].dict;
-  int count = numWords;
+  NSMutableDictionary *dict = [GameData sharedData].dict;
+  long count = [Words sharedData].names.count;
   if( dict.count < count ) {
-    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithArray: @[
-                                                                          @{
-                                                                            @"\u0906\u0913": [NSNumber numberWithInt: 1],
-                                                                            @"\u0915\u094d\u0932\u093e\u0909\u0921": [NSNumber numberWithInt: 1],
-                                                                            @"\u091c\u093e\u0913": [NSNumber numberWithInt: 1],
-                                                                            @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 9],
-                                                                            @"\u0928\u0949\u0907\u095b.": [NSNumber numberWithInt: 1],
-                                                                            @"\u092c\u0924\u093e\u0913": [NSNumber numberWithInt: 1],
-                                                                            @"\u092c\u093e\u0939\u094b\u0902": [NSNumber numberWithInt: 1],
-                                                                            @"\u0930\u0939\u093e": [NSNumber numberWithInt: 4],
-                                                                            @"\u0930\u093e\u092e": [NSNumber numberWithInt: 3],
-                                                                            @"\u0930\u093e\u0935\u0923": [NSNumber numberWithInt: 1],
-                                                                            @"\u0930\u093e\u0939\u0941\u0932": [NSNumber numberWithInt: 4],
-                                                                            @"\u0930\u093e\u0939\u094b": [NSNumber numberWithInt: 1],
-                                                                            @"\u0930\u093e\u0939\u094b\u0902": [NSNumber numberWithInt: 1],
-                                                                            @"\u0932\u093e\u0913": [NSNumber numberWithInt: 4],
-                                                                            @"\u0932\u093e\u0932": [NSNumber numberWithInt: 1],
-                                                                            @"\u0932\u093e\u0939\u094c\u0930": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u0939\u093e\u0901": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u0939\u093e\u0902": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u093e\u0913": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u093e\u0939": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u094b": [NSNumber numberWithInt: 1],
-                                                                            @"\u0939\u0942\u0901": [NSNumber numberWithInt: 2],
-                                                                            @"\u0939\u0942\u0902": [NSNumber numberWithInt: 1],
-                                                                            @"\u0939\u0948": [NSNumber numberWithInt: 1]
-                                                                            },
-                                                                          @{
-                                                                            @"\u0905\u0930\u0947": [NSNumber numberWithInt: 1],
-                                                                            @"\u0924\u0947\u0935\u0930": [NSNumber numberWithInt: 1],
-                                                                            @"\u0926\u0947\u0935\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0927\u0928\u094d\u092f\u0935\u093e\u0926": [NSNumber numberWithInt: 6],
-                                                                            @"\u0927\u0928\u094d\u092f\u0935\u093e\u0926\u094d": [NSNumber numberWithInt: 1],
-                                                                            @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 3],
-                                                                            @"\u092a\u0930\u093f\u0935\u093e\u0930": [NSNumber numberWithInt: 1],
-                                                                            @"\u092a\u0940\u0932\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u092f\u0941\u0935\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0930\u093f\u0935\u093e\u091c": [NSNumber numberWithInt: 1],
-                                                                            @"\u0930\u0947\u0935\u093e": [NSNumber numberWithInt: 3],
-                                                                            @"\u0935\u093f\u0935\u093e\u0926": [NSNumber numberWithInt: 3],
-                                                                            @"\u0935\u093f\u0935\u093e\u0939": [NSNumber numberWithInt: 3],
-                                                                            @"\u0938\u0947\u0935\u093e": [NSNumber numberWithInt: 5]
-                                                                            },
-                                                                          @{
-                                                                            @"\u0906\u092f\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0906\u0930\u091f\u0940": [NSNumber numberWithInt: 1],
-                                                                            @"\u0906\u0930\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0915\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 4],
-                                                                            @"\u092d\u093e\u0930\u0924": [NSNumber numberWithInt: 2],
-                                                                            @"\u0939\u092e\u093e\u0930\u093e": [NSNumber numberWithInt: 6],
-                                                                            @"\u0939\u0930": [NSNumber numberWithInt: 2],
-                                                                            @"\u0939\u0930\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0939\u093e": [NSNumber numberWithInt: 8],
-                                                                            @"\u0939\u093e\u0901": [NSNumber numberWithInt: 3],
-                                                                            @"\u0939\u093e\u0930\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u0939\u093e\u0935\u095c\u093e": [NSNumber numberWithInt: 1]
-                                                                            },
-                                                                          @{
-                                                                            @"\u0915\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0917\u092f\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0924\u0947\u0930\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0926\u093f\u092f\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0927\u0928\u094d\u092f\u0935\u093e\u0926": [NSNumber numberWithInt: 7],
-                                                                            @"\u0928\u0939\u0940\u0902": [NSNumber numberWithInt: 1],
-                                                                            @"\u0928\u0940\u0932\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0928\u0947\u0924\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u0928\u0947\u0939\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 7],
-                                                                            @"\u092a\u094d\u0930\u093f\u092f\u093e": [NSNumber numberWithInt: 3],
-                                                                            @"\u092a\u094d\u0932\u0947\u092c\u0949\u092f": [NSNumber numberWithInt: 1],
-                                                                            @"\u092e\u0939\u093f\u0932\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u092e\u0940\u0930\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u092e\u0947\u0930\u093e": [NSNumber numberWithInt: 8],
-                                                                            @"\u092e\u0947\u0930\u0947": [NSNumber numberWithInt: 1],
-                                                                            @"\u092e\u0947\u0935\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u092e\u0947\u0935\u093e\u0924": [NSNumber numberWithInt: 1],
-                                                                            @"\u0930\u0939\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u093f\u0935\u093e\u0926": [NSNumber numberWithInt: 1],
-                                                                            @"\u0935\u093f\u0935\u093e\u0939": [NSNumber numberWithInt: 2],
-                                                                            @"\u0936\u0928\u093f\u0935\u093e\u0930": [NSNumber numberWithInt: 1],
-                                                                            @"\u0938\u0947\u0935\u093e": [NSNumber numberWithInt: 5]
-                                                                            },
-                                                                          @{
-                                                                            @"\u090f\u0915": [NSNumber numberWithInt: 1],
-                                                                            @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 13],
-                                                                            @"\u095e\u093e\u0907\u0932\u0947\u0902": [NSNumber numberWithInt: 1],
-                                                                            @"\u092b\u094d\u0930\u0948\u0902\u0915": [NSNumber numberWithInt: 2],
-                                                                            @"\u0938\u095e\u0930": [NSNumber numberWithInt: 1],
-                                                                            @"\u0938\u092b\u093e\u0908": [NSNumber numberWithInt: 3],
-                                                                            @"\u0938\u092b\u0947\u0926": [NSNumber numberWithInt: 24],
-                                                                            @"\u0938\u095e\u0947\u0926": [NSNumber numberWithInt: 11],
-                                                                            @"\u0938\u092c\u0938\u0947": [NSNumber numberWithInt: 1],
-                                                                            @"\u0938\u0930": [NSNumber numberWithInt: 2],
-                                                                            @"\u0938\u0949\u092b\u094d\u091f\u0935\u0947\u092f\u0930": [NSNumber numberWithInt: 3],
-                                                                            @"\u0939\u0948": [NSNumber numberWithInt: 1]
-                                                                            },
-                                                                          @{
-                                                                            @"\u0915\u0939\u093e": [NSNumber numberWithInt: 3],
-                                                                            @"\u0915\u093e": [NSNumber numberWithInt: 8],
-                                                                            @"\u0915\u093e\u092c\u093e": [NSNumber numberWithInt: 3],
-                                                                            @"\u0915\u093e\u0932\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u0915\u094d\u092f\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0918\u0902\u091f\u093e": [NSNumber numberWithInt: 1],
-                                                                            @"\u0926\u093f\u0916\u093e\u0935\u093e": [NSNumber numberWithInt: 2],
-                                                                            @"\u0939\u0935\u093e": [NSNumber numberWithInt: 3],
-                                                                            @"\u0939\u0941\u0906": [NSNumber numberWithInt: 1]
-                                                                            }
-                                                                          ]
-                                  ];
+    NSArray *tempArray = [[NSMutableArray alloc] initWithArray: @[
+                                                                  @{
+                                                                    @"\u0906\u0913": [NSNumber numberWithInt: 1],
+                                                                    @"\u0915\u094d\u0932\u093e\u0909\u0921": [NSNumber numberWithInt: 1],
+                                                                    @"\u091c\u093e\u0913": [NSNumber numberWithInt: 1],
+                                                                    @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 9],
+                                                                    @"\u0928\u0949\u0907\u095b.": [NSNumber numberWithInt: 1],
+                                                                    @"\u092c\u0924\u093e\u0913": [NSNumber numberWithInt: 1],
+                                                                    @"\u092c\u093e\u0939\u094b\u0902": [NSNumber numberWithInt: 1],
+                                                                    @"\u0930\u0939\u093e": [NSNumber numberWithInt: 4],
+                                                                    @"\u0930\u093e\u092e": [NSNumber numberWithInt: 3],
+                                                                    @"\u0930\u093e\u0935\u0923": [NSNumber numberWithInt: 1],
+                                                                    @"\u0930\u093e\u0939\u0941\u0932": [NSNumber numberWithInt: 4],
+                                                                    @"\u0930\u093e\u0939\u094b": [NSNumber numberWithInt: 1],
+                                                                    @"\u0930\u093e\u0939\u094b\u0902": [NSNumber numberWithInt: 1],
+                                                                    @"\u0932\u093e\u0913": [NSNumber numberWithInt: 4],
+                                                                    @"\u0932\u093e\u0932": [NSNumber numberWithInt: 1],
+                                                                    @"\u0932\u093e\u0939\u094c\u0930": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u0939\u093e\u0901": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u0939\u093e\u0902": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u093e\u0913": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u093e\u0939": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u094b": [NSNumber numberWithInt: 1],
+                                                                    @"\u0939\u0942\u0901": [NSNumber numberWithInt: 2],
+                                                                    @"\u0939\u0942\u0902": [NSNumber numberWithInt: 1],
+                                                                    @"\u0939\u0948": [NSNumber numberWithInt: 1]
+                                                                    },
+                                                                  @{
+                                                                    @"\u0905\u0930\u0947": [NSNumber numberWithInt: 1],
+                                                                    @"\u0924\u0947\u0935\u0930": [NSNumber numberWithInt: 1],
+                                                                    @"\u0926\u0947\u0935\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0927\u0928\u094d\u092f\u0935\u093e\u0926": [NSNumber numberWithInt: 6],
+                                                                    @"\u0927\u0928\u094d\u092f\u0935\u093e\u0926\u094d": [NSNumber numberWithInt: 1],
+                                                                    @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 3],
+                                                                    @"\u092a\u0930\u093f\u0935\u093e\u0930": [NSNumber numberWithInt: 1],
+                                                                    @"\u092a\u0940\u0932\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u092f\u0941\u0935\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0930\u093f\u0935\u093e\u091c": [NSNumber numberWithInt: 1],
+                                                                    @"\u0930\u0947\u0935\u093e": [NSNumber numberWithInt: 3],
+                                                                    @"\u0935\u093f\u0935\u093e\u0926": [NSNumber numberWithInt: 3],
+                                                                    @"\u0935\u093f\u0935\u093e\u0939": [NSNumber numberWithInt: 3],
+                                                                    @"\u0938\u0947\u0935\u093e": [NSNumber numberWithInt: 5]
+                                                                    },
+                                                                  @{
+                                                                    @"\u0906\u092f\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0906\u0930\u091f\u0940": [NSNumber numberWithInt: 1],
+                                                                    @"\u0906\u0930\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0915\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 4],
+                                                                    @"\u092d\u093e\u0930\u0924": [NSNumber numberWithInt: 2],
+                                                                    @"\u0939\u092e\u093e\u0930\u093e": [NSNumber numberWithInt: 6],
+                                                                    @"\u0939\u0930": [NSNumber numberWithInt: 2],
+                                                                    @"\u0939\u0930\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0939\u093e": [NSNumber numberWithInt: 8],
+                                                                    @"\u0939\u093e\u0901": [NSNumber numberWithInt: 3],
+                                                                    @"\u0939\u093e\u0930\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u0939\u093e\u0935\u095c\u093e": [NSNumber numberWithInt: 1]
+                                                                    },
+                                                                  @{
+                                                                    @"\u0915\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0917\u092f\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0924\u0947\u0930\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0926\u093f\u092f\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0927\u0928\u094d\u092f\u0935\u093e\u0926": [NSNumber numberWithInt: 7],
+                                                                    @"\u0928\u0939\u0940\u0902": [NSNumber numberWithInt: 1],
+                                                                    @"\u0928\u0940\u0932\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0928\u0947\u0924\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u0928\u0947\u0939\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 7],
+                                                                    @"\u092a\u094d\u0930\u093f\u092f\u093e": [NSNumber numberWithInt: 3],
+                                                                    @"\u092a\u094d\u0932\u0947\u092c\u0949\u092f": [NSNumber numberWithInt: 1],
+                                                                    @"\u092e\u0939\u093f\u0932\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u092e\u0940\u0930\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u092e\u0947\u0930\u093e": [NSNumber numberWithInt: 8],
+                                                                    @"\u092e\u0947\u0930\u0947": [NSNumber numberWithInt: 1],
+                                                                    @"\u092e\u0947\u0935\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u092e\u0947\u0935\u093e\u0924": [NSNumber numberWithInt: 1],
+                                                                    @"\u0930\u0939\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u093f\u0935\u093e\u0926": [NSNumber numberWithInt: 1],
+                                                                    @"\u0935\u093f\u0935\u093e\u0939": [NSNumber numberWithInt: 2],
+                                                                    @"\u0936\u0928\u093f\u0935\u093e\u0930": [NSNumber numberWithInt: 1],
+                                                                    @"\u0938\u0947\u0935\u093e": [NSNumber numberWithInt: 5]
+                                                                    },
+                                                                  @{
+                                                                    @"\u090f\u0915": [NSNumber numberWithInt: 1],
+                                                                    @"\u0928\u0949\u0907\u095b": [NSNumber numberWithInt: 13],
+                                                                    @"\u095e\u093e\u0907\u0932\u0947\u0902": [NSNumber numberWithInt: 1],
+                                                                    @"\u092b\u094d\u0930\u0948\u0902\u0915": [NSNumber numberWithInt: 2],
+                                                                    @"\u0938\u095e\u0930": [NSNumber numberWithInt: 1],
+                                                                    @"\u0938\u092b\u093e\u0908": [NSNumber numberWithInt: 3],
+                                                                    @"\u0938\u092b\u0947\u0926": [NSNumber numberWithInt: 24],
+                                                                    @"\u0938\u095e\u0947\u0926": [NSNumber numberWithInt: 11],
+                                                                    @"\u0938\u092c\u0938\u0947": [NSNumber numberWithInt: 1],
+                                                                    @"\u0938\u0930": [NSNumber numberWithInt: 2],
+                                                                    @"\u0938\u0949\u092b\u094d\u091f\u0935\u0947\u092f\u0930": [NSNumber numberWithInt: 3],
+                                                                    @"\u0939\u0948": [NSNumber numberWithInt: 1]
+                                                                    },
+                                                                  @{
+                                                                    @"\u0915\u0939\u093e": [NSNumber numberWithInt: 3],
+                                                                    @"\u0915\u093e": [NSNumber numberWithInt: 8],
+                                                                    @"\u0915\u093e\u092c\u093e": [NSNumber numberWithInt: 3],
+                                                                    @"\u0915\u093e\u0932\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u0915\u094d\u092f\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0918\u0902\u091f\u093e": [NSNumber numberWithInt: 1],
+                                                                    @"\u0926\u093f\u0916\u093e\u0935\u093e": [NSNumber numberWithInt: 2],
+                                                                    @"\u0939\u0935\u093e": [NSNumber numberWithInt: 3],
+                                                                    @"\u0939\u0941\u0906": [NSNumber numberWithInt: 1]
+                                                                    }
+                                                                  ]
+                          ];
     
     for( int i=0; i < tempArray.count; i++ ) {
-      [GameData sharedData].dict[i] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
+      NSString *word = [Words sharedData].names[i];
+      dict[ word ] = [[NSMutableDictionary alloc] initWithDictionary:tempArray[i]];
     }
   }
 }
