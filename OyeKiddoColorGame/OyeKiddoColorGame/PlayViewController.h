@@ -21,8 +21,6 @@
   SKRecognizer* voiceSearch;
 
   TrainViewState trainViewState;
-  
-  NSNumber *one;
 };
 
 @property (nonatomic,retain) PlayViewController *playViewController;

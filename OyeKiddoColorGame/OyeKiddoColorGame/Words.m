@@ -30,6 +30,6 @@
 
 + (NSString *) random
 {
-  return [Words sharedData].names[ arc4random_uniform((int) [Words sharedData].names.count) ];
+  return [Words sharedData].hindiNames[ arc4random_uniform((int) [Words sharedData].hindiNames.count) ];
 }
 @end

@@ -19,8 +19,6 @@
 -(void) viewDidLoad
 {
   [super viewDidLoad];
-  one = [NSNumber numberWithInt:1];
-  
   playViewController = (PlayViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"playViewController"];
   SKView *skView = (SKView *) self.view;
   skView.multipleTouchEnabled = false;
@@ -104,22 +102,23 @@
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithResults:(SKRecognition *)results
 {
-  NSMutableDictionary *dict = [GameData sharedData].dict;
-  NSMutableDictionary *wordDictionary = dict[ word ];
   long numResults = [results.results count];
   
   Boolean found = false;
 //  NSLog(@"Got Here numResults = %ld", numResults );
   if( numResults != 0 ) {
+    NSMutableDictionary *dict = [GameData sharedData].dict;
+    NSString *alternatives = dict[word];
+    NSMutableArray *alternativesArray = [[NSMutableArray alloc] initWithArray:[alternatives componentsSeparatedByString:@","]];
     for( int i = 0; i < numResults; i++ ) {
       NSString *sentence = results.results[i];
       NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       for( NSString *w in words ) {
-//        NSLog([NSString stringWithFormat:@"TESTING %@", w]);
-        for( NSString *w2 in wordDictionary ) {
-//          NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
+        //      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
+        for( NSString *w2 in alternativesArray ) {
+          //        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
           if( [w compare: w2] == NSOrderedSame ) {
-//            NSLog(@"found");
+            //          NSLog(@"found");
             found = true;
             break;
           }
@@ -137,18 +136,21 @@
         NSString *sentence = results.results[i];
         NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         for( NSString *w in words ) {
-          if( [wordDictionary objectForKey:w]) {
-            NSNumber *num = [wordDictionary objectForKey:w];
-            num = @(num.integerValue + 1);
-            [wordDictionary setObject:num forKey:w];
-            //          NSLog([NSString stringWithFormat:@"incrementing key %@ to value %d", w, num.integerValue]);
-          } else {
-            [wordDictionary setObject:one forKey:w];
+          Boolean found2 = false;
+          for (NSString *w2 in alternativesArray) {
+            if( [w compare: w2] == NSOrderedSame ) {
+              found2 = true;
+              break;
+            }
+          }
+          if ( !found2 ) {
+            [alternativesArray addObject:w];
             //          NSLog([NSString stringWithFormat:@"adding key %@", w]);
           }
         }
       }
       [ wordScene incrementScore];
+      dict[word] = [alternativesArray componentsJoinedByString:@","];
       [[GameData sharedData] save];
       long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].rightWordSounds.count)].integerValue;
       [Sounds play:(AVAudioPlayer *)[Sounds sharedData].rightWordSounds[ index ] delegate:self ];

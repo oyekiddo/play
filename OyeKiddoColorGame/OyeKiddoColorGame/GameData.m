@@ -27,6 +27,13 @@ static NSString* const SSGameDataDictKey = @"dict";
   return self;
 }
 
+-(id) init
+{
+  self.dict = [[NSMutableDictionary alloc] init];
+  self.highScore = 0;
+  return self;
+}
+
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
   [encoder encodeDouble:self.highScore forKey: SSGameDataHighScoreKey];
@@ -70,11 +77,74 @@ static NSString* const SSGameDataDictKey = @"dict";
   [encodedData writeToFile:[GameData filePath] atomically:YES];
 }
 
--(id) init
+-(void) requestDataFromServer
 {
-  self.dict = [[NSMutableDictionary alloc] init];
-  self.highScore = 0;
-  return self;
+  
+}
+
+-(void) sendDataToServer
+{
+  NSError *error = nil;
+  NSMutableDictionary *dict = [GameData sharedData].dict;
+  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+  if (jsonData) {
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://host:port/oyekiddo/addToDictionary.json"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)[jsonData length]];
+    [request setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+    [request setTimeoutInterval:30.0];
+    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    if(conn)
+    {
+      NSLog(@"Connection successfull");
+    }
+    else
+    {
+      NSLog(@"connection could not be made");
+      
+    }
+    
+  } else {
+    NSLog(@"Unable to serialize the data %@: %@", dict, error);
+  }
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+  NSLog(@"DidReceiveResponse %@", response);
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+  NSLog(@"DidReceiveData");
+  NSLog(@"DATA %@",data);
+}
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+  NSLog(@"Error is");
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+  
+//  NSLog(@"Succeeded! Received %d bytes of data",[webData length]);
+//  NSLog(@"Data is %@",webData);
+//  
+//  
+//  
+//  // NSLog(@"receivedData%@",_receivedData);
+//  
+//  NSString *responseText = [[NSString alloc] initWithData:webData encoding: NSASCIIStringEncoding];
+//  NSLog(@"Response: %@", responseText);//holds textfield entered value
+//  
+//  NSLog(@"");
+//  
+//  NSString *newLineStr = @"\n";
+//  responseText = [responseText stringByReplacingOccurrencesOfString:@"<br />" withString:newLineStr];
+//  
+//  NSLog(@"ResponesText %@",responseText);
+  
 }
 
 -(void)reset

@@ -22,7 +22,7 @@
   self.didntGetSounds = [[NSMutableDictionary alloc] init];
   self.wrongWordSounds = [[NSMutableDictionary alloc] init];
   for (int i = 0; i < canYouSayFilenames.count; i++ ) {
-    NSString *name = [Words sharedData].names[i];
+    NSString *name = [Words sharedData].hindiNames[i];
     self.canYouSaySounds[name] = [[AVAudioPlayer alloc]
                                   initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:canYouSayFilenames[i] ofType: @"wav" ]]
                                   error:nil

@@ -31,7 +31,7 @@
   [wordScene setupMessage];
   
   lessonNumber = 0;
-  word = [Words sharedData].names[lessonNumber];
+  word = [Words sharedData].hindiNames[lessonNumber];
   trainViewState = IDLE;
   [self startLesson];
 }
@@ -95,13 +95,13 @@
 {
   NSString *hindiName = [Words sharedData].hindiNames[lessonNumber];
   NSMutableDictionary *dict = [GameData sharedData].dict;
-  NSMutableDictionary *wordDictionary = dict[word];
-  if( wordDictionary == nil ) {
-    wordDictionary = [NSMutableDictionary dictionary];
-    [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:hindiName];
-    [GameData sharedData].dict[word] = wordDictionary;
+  NSString *alternatives = dict[word];
+  if( alternatives == nil ) {
+    alternatives = hindiName;
+    [GameData sharedData].dict[word] = alternatives;
 //    NSLog([NSString stringWithFormat:@"adding key %@", hindiName]);
   }
+  NSMutableArray *alternativesArray = [[NSMutableArray alloc] initWithArray:[alternatives componentsSeparatedByString:@","]];
   long numResults = [results.results count];
   
   Boolean found = false;
@@ -111,7 +111,7 @@
     NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for( NSString *w in words ) {
 //      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
-      for( NSString *w2 in wordDictionary ) {
+      for( NSString *w2 in alternativesArray ) {
 //        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
         if( [w compare: w2] == NSOrderedSame ) {
 //          NSLog(@"found");
@@ -127,17 +127,10 @@
       NSString *sentence = results.results[i];
       NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       for( NSString *w in words ) {
-        if( [wordDictionary objectForKey:w]) {
-          NSNumber *num = [wordDictionary objectForKey:w];
-          num = @(num.integerValue + 1);
-          [wordDictionary setObject:num forKey:w];
-//          NSLog([NSString stringWithFormat:@"incrementing key %@ to value %d", w, num.integerValue]);
-        } else {
-          [wordDictionary setObject:[NSNumber numberWithInt: 1] forKey:w];
-//          NSLog([NSString stringWithFormat:@"adding key %@", w]);
-        }
+        [alternativesArray addObject:w];
       }
     }
+    dict[word] = [alternativesArray componentsJoinedByString:@","];
     [[GameData sharedData] save];
     trainViewState = DIDNT_RECOGNIZE;
     voiceSearch = nil;
@@ -149,7 +142,7 @@
     if( lessonNumber < (count - 1) ) {
       [wordScene removeWordFromScene];
       lessonNumber++;
-      word = [Words sharedData].names[lessonNumber];
+      word = [Words sharedData].hindiNames[lessonNumber];
       voiceSearch = nil;
       [self startLesson];
     } else {

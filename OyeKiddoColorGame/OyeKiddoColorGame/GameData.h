@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GameData : NSObject <NSCoding>
+@interface GameData : NSObject <NSCoding, NSURLConnectionDataDelegate>
 
 @property (assign, nonatomic) long score;
+@property (retain, nonatomic) NSMutableData *webData;
 
 // persistant data
 @property (assign, nonatomic) long highScore;

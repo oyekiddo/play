@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>0BB6F5D6-267F-4FDD-AAF1-8CAFF61AC945</string>
 	<key>IDESourceControlProjectName</key>
-	<string>OyeKiddoColorGame</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F7B623AA2796A5ACE53CC2152D524449EA8F972A</key>
 		<string>https://github.com/oyekiddo/play.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OyeKiddoColorGame/OyeKiddoColorGame.xcodeproj</string>
+	<string>OyeKiddoColorGame/OyeKiddoColorGame.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F7B623AA2796A5ACE53CC2152D524449EA8F972A</key>
