@@ -172,6 +172,7 @@ static NSString* const SSGameDataDictKey = @"dict";
           self.dict[key] = wordsArray2;
         }
       }
+      [self save];
     } else {
       self.dict = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
     }
