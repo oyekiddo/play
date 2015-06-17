@@ -12,16 +12,18 @@
 
 @property (assign, nonatomic) long score;
 @property (retain, nonatomic) NSMutableDictionary *receivedData;
-@property (assign, nonatomic) BOOL dirty;
+@property (assign, nonatomic) NSTimer *timer;
 
 // persistant data
 @property (assign, nonatomic) long highScore;
 @property (retain, nonatomic) NSMutableDictionary *dict;
+@property (assign, nonatomic) BOOL dirty;
 
 +(instancetype)sharedData;
 -(void)reset;
 -(void)save;
 -(void) requestDataFromServer;
 -(void) sendDataToServer;
+-(void) sendDataToServerTimer;
 
 @end

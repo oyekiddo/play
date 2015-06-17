@@ -36,6 +36,7 @@ static NSString* const SSGameDataDictKey = @"dict";
   self.receivedData = [[NSMutableDictionary alloc] init];
   self.dirty = false;
   self.highScore = 0;
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(sendDataToServerTimer) userInfo:nil repeats:true];
   [self requestDataFromServer];
   return self;
 }
@@ -116,6 +117,15 @@ static NSString* const SSGameDataDictKey = @"dict";
   } else {
     NSLog(@"Unable to serialize the data %@: %@", dict, error);
   }
+}
+
+-(void) sendDataToServerTimer
+{
+  if( self.dirty ) {
+    [self sendDataToServer];
+    self.dirty = false;
+  }
+    
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

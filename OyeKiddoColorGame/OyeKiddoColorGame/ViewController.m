@@ -106,6 +106,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
 {
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
+  [[GameData sharedData] sendDataToServer];
 }
 
 - (IBAction)trainButton:(id)sender
