@@ -136,7 +136,7 @@ static NSString* const SSGameDataDictKey = @"dict";
 {
   NSError *error = nil;
   NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:self.receivedData[connection.originalRequest.HTTPMethod] options:NSJSONReadingAllowFragments error:&error];
-  if ([dictionary[@"status"]  isEqual: @"1"]) {
+  if ([dictionary[@"status"]  isEqual: @"0"]) {
     if (self.dirty && [connection.originalRequest.HTTPMethod isEqualToString:@"GET"]) {
       // dictionary is dirty need to merge
       for( NSString *key in dictionary ) {
