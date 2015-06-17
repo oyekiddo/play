@@ -23,7 +23,7 @@ static NSString* const SSGameDataDictKey = @"dict";
     self.dirty = [decoder decodeBoolForKey:SSGameDataDirtyKey];
     NSDictionary *tempDictionary = [decoder decodeObjectForKey:SSGameDataDictKey];
     for( NSString *key in tempDictionary ) {
-      self.dict[key] = [[NSMutableDictionary alloc] initWithDictionary:tempDictionary[key]];
+      self.dict[key] = tempDictionary[key];
     }
   }
   [self requestDataFromServer];
@@ -36,7 +36,7 @@ static NSString* const SSGameDataDictKey = @"dict";
   self.receivedData = [[NSMutableDictionary alloc] init];
   self.dirty = false;
   self.highScore = 0;
-  self.timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(sendDataToServerTimer) userInfo:nil repeats:true];
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(sendDataToServerIfDirty) userInfo:nil repeats:true];
   [self requestDataFromServer];
   return self;
 }
@@ -119,7 +119,7 @@ static NSString* const SSGameDataDictKey = @"dict";
   }
 }
 
--(void) sendDataToServerTimer
+-(void) sendDataToServerIfDirty
 {
   if( self.dirty ) {
     [self sendDataToServer];

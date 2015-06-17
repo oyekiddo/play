@@ -44,7 +44,7 @@
   // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload
+- (void)viewDidDisappear:(BOOL)animated
 {
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;

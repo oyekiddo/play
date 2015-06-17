@@ -28,8 +28,8 @@
   return sharedInstance;
 }
 
-+ (NSString *) random
++ (int) random
 {
-  return [Words sharedData].hindiNames[ arc4random_uniform((int) [Words sharedData].hindiNames.count) ];
+  return arc4random_uniform((int) [Words sharedData].hindiNames.count);
 }
 @end

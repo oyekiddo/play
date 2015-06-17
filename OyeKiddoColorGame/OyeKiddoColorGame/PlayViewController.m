@@ -44,7 +44,7 @@
   // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload
+- (void)viewDidDisappear:(BOOL)animated
 {
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -57,8 +57,9 @@
 - (void) generateWord
 {
   trainViewState = GENERATE_WORD;
-  word = [Words random];
-  [wordScene addWordToScene: word];
+  wordIndex = [Words random];
+  word = [Words sharedData].hindiNames[wordIndex];
+  [wordScene addWordToScene: [Words sharedData].names[wordIndex]];
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
   long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].canYouTellMeSounds.count)].integerValue;
   [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];

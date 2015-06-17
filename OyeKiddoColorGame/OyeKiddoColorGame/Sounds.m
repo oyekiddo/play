@@ -83,8 +83,8 @@
 +(void) stop
 {
   AVAudioPlayer* playingSound = [Sounds sharedData].playingSound;
-  playingSound.delegate = nil;
   [playingSound stop];
+  playingSound.delegate = nil;
   [Sounds sharedData].playingSound = nil;
 }
 @end

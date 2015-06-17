@@ -15,6 +15,6 @@
 @property NSArray *hindiNames;
 
 +(instancetype)sharedData;
-+ (NSString *) random;
++ (int) random;
 
 @end

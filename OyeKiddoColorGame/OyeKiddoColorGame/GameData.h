@@ -24,6 +24,6 @@
 -(void)save;
 -(void) requestDataFromServer;
 -(void) sendDataToServer;
--(void) sendDataToServerTimer;
+-(void) sendDataToServerIfDirty;
 
 @end

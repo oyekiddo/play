@@ -17,6 +17,7 @@
   PlayViewController *playViewController;
   WordScene *wordScene;
   NSString *word;
+  int wordIndex;
 
   SKRecognizer* voiceSearch;
 
