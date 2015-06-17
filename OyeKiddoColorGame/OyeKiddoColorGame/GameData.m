@@ -12,31 +12,38 @@
 @implementation GameData
 
 static NSString* const SSGameDataHighScoreKey = @"highScore";
+static NSString* const SSGameDataDirtyKey = @"dirty";
 static NSString* const SSGameDataDictKey = @"dict";
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
   self = [self init];
   if (self) {
-    _highScore = [decoder decodeDoubleForKey: SSGameDataHighScoreKey];
+    self.highScore = [decoder decodeDoubleForKey: SSGameDataHighScoreKey];
+    self.dirty = [decoder decodeBoolForKey:SSGameDataDirtyKey];
     NSDictionary *tempDictionary = [decoder decodeObjectForKey:SSGameDataDictKey];
     for( NSString *key in tempDictionary ) {
-      _dict[key] = [[NSMutableDictionary alloc] initWithDictionary:tempDictionary[key]];
+      self.dict[key] = [[NSMutableDictionary alloc] initWithDictionary:tempDictionary[key]];
     }
   }
+  [self requestDataFromServer];
   return self;
 }
 
 -(id) init
 {
   self.dict = [[NSMutableDictionary alloc] init];
+  self.receivedData = [[NSMutableDictionary alloc] init];
+  self.dirty = false;
   self.highScore = 0;
+  [self requestDataFromServer];
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
   [encoder encodeDouble:self.highScore forKey: SSGameDataHighScoreKey];
+  [encoder encodeBool:self.dirty forKey:SSGameDataDirtyKey];
   [encoder encodeObject:self.dict forKey:SSGameDataDictKey];
 }
 
@@ -72,6 +79,7 @@ static NSString* const SSGameDataDictKey = @"dict";
 
 -(void)save
 {
+  self.dirty = true;
   NSLog( @"%@", [GameData sharedData].dict );
   NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
   [encodedData writeToFile:[GameData filePath] atomically:YES];
@@ -79,32 +87,32 @@ static NSString* const SSGameDataDictKey = @"dict";
 
 -(void) requestDataFromServer
 {
-  
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://ec2-52-25-134-140.us-west-2.compute.amazonaws.com:8080/ok/alternatives.json"]];
+  [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+  [request setTimeoutInterval:30.0];
+  [request setHTTPMethod:@"GET"];
+  self.receivedData[@"GET"] = [[NSMutableData alloc] init];
+  NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+  [connection start];
 }
 
 -(void) sendDataToServer
 {
   NSError *error = nil;
   NSMutableDictionary *dict = [GameData sharedData].dict;
-  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSUTF8StringEncoding error:&error];
   if (jsonData) {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://host:port/oyekiddo/addToDictionary.json"]];
-    [request setHTTPMethod:@"POST"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://ec2-52-25-134-140.us-west-2.compute.amazonaws.com:8080/ok/alternatives.json"]];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setTimeoutInterval:30.0];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
     NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)[jsonData length]];
     [request setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
-    [request setTimeoutInterval:30.0];
-    NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    if(conn)
-    {
-      NSLog(@"Connection successfull");
-    }
-    else
-    {
-      NSLog(@"connection could not be made");
-      
-    }
-    
+    self.receivedData[@"POST"] = [[NSMutableData alloc] init];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+
   } else {
     NSLog(@"Unable to serialize the data %@: %@", dict, error);
   }
@@ -117,34 +125,47 @@ static NSString* const SSGameDataDictKey = @"dict";
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-  NSLog(@"DidReceiveData");
-  NSLog(@"DATA %@",data);
+  [self.receivedData[connection.originalRequest.HTTPMethod] appendData:data];
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-  NSLog(@"Error is");
+  NSLog(@"Error is %@" , error);
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  
-//  NSLog(@"Succeeded! Received %d bytes of data",[webData length]);
-//  NSLog(@"Data is %@",webData);
-//  
-//  
-//  
-//  // NSLog(@"receivedData%@",_receivedData);
-//  
-//  NSString *responseText = [[NSString alloc] initWithData:webData encoding: NSASCIIStringEncoding];
-//  NSLog(@"Response: %@", responseText);//holds textfield entered value
-//  
-//  NSLog(@"");
-//  
-//  NSString *newLineStr = @"\n";
-//  responseText = [responseText stringByReplacingOccurrencesOfString:@"<br />" withString:newLineStr];
-//  
-//  NSLog(@"ResponesText %@",responseText);
-  
+  NSError *error = nil;
+  NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:self.receivedData[connection.originalRequest.HTTPMethod] options:NSJSONReadingAllowFragments error:&error];
+  if ([dictionary[@"status"]  isEqual: @"1"]) {
+    if (self.dirty && [connection.originalRequest.HTTPMethod isEqualToString:@"GET"]) {
+      // dictionary is dirty need to merge
+      for( NSString *key in dictionary ) {
+        Boolean changed = false;
+        NSString *alternatives1 = dictionary[key];
+        NSArray *wordsArray1 = [alternatives1 componentsSeparatedByString:@"," ];
+        NSString *alternatives2 = self.dict[key];
+        NSMutableArray *wordsArray2 = [[NSMutableArray alloc] initWithArray:[alternatives2 componentsSeparatedByString:@"," ]];
+        for ( NSString *w in wordsArray1 ) {
+          Boolean found = false;
+          for( NSString *w2 in wordsArray2 ) {
+            if( [w compare: w2] == NSOrderedSame ) {
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            [wordsArray2 addObject: w];
+            changed = true;
+          }
+        }
+        if( changed ) {
+          self.dict[key] = wordsArray2;
+        }
+      }
+    } else {
+      self.dict = [[NSMutableDictionary alloc] initWithDictionary:dictionary];
+    }
+  }
 }
 
 -(void)reset

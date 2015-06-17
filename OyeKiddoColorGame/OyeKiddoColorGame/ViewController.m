@@ -74,7 +74,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                   useSSL:NO
                 delegate:nil];
   NSMutableDictionary *dict = [GameData sharedData].dict;
-  long count = [Words sharedData].names.count;
+  long count = [Words sharedData].hindiNames.count;
   if( dict.count < count ) {
     NSArray *tempArray = [[NSMutableArray alloc] initWithArray: @[
                                                                   @"\u0915\u0939\u093e,\u0915\u093e,\u0915\u093e\u092c\u093e,\u0915\u093e\u0932\u093e,\u0915\u094d\u092f\u093e,\u0918\u0902\u091f\u093e,\u0926\u093f\u0916\u093e\u0935\u093e,\u0939\u0935\u093e,\u0939\u0941\u0906",
@@ -87,9 +87,10 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
                           ];
     
     for( int i=0; i < tempArray.count; i++ ) {
-      NSString *word = [Words sharedData].hindiNames[i];
-      dict[ word ] = tempArray[i];
+      NSString *hindiName = [Words sharedData].hindiNames[i];
+      dict[ hindiName ] = tempArray[i];
     }
+//    [[GameData sharedData] sendDataToServer];
   }
 }
 

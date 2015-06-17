@@ -11,7 +11,8 @@
 @interface GameData : NSObject <NSCoding, NSURLConnectionDataDelegate>
 
 @property (assign, nonatomic) long score;
-@property (retain, nonatomic) NSMutableData *webData;
+@property (retain, nonatomic) NSMutableDictionary *receivedData;
+@property (assign, nonatomic) BOOL dirty;
 
 // persistant data
 @property (assign, nonatomic) long highScore;
@@ -20,5 +21,7 @@
 +(instancetype)sharedData;
 -(void)reset;
 -(void)save;
+-(void) requestDataFromServer;
+-(void) sendDataToServer;
 
 @end
