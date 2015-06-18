@@ -45,8 +45,9 @@
   // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
+  [super viewWillDisappear:animated];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
   [Sounds stop];
@@ -67,7 +68,10 @@
     firstTime = false;
     [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];
   } else {
-    if (voiceSearch) voiceSearch = nil;
+    if (voiceSearch != nil ) {
+      [voiceSearch cancel];
+      voiceSearch = nil;
+    }
     trainViewState = START_RECORDING;
     voiceSearch = [[SKRecognizer alloc] initWithType:SKDictationRecognizerType
                                            detection:SKShortEndOfSpeechDetection
@@ -83,7 +87,10 @@
     case ZERO_RESULTS:
     case FAILED_RECORDING:
       [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
-      if (voiceSearch) voiceSearch = nil;
+      if (voiceSearch != nil ) {
+        [voiceSearch cancel];
+        voiceSearch = nil;
+      }
       trainViewState = START_RECORDING;
       voiceSearch = [[SKRecognizer alloc] initWithType:SKDictationRecognizerType
                                              detection:SKShortEndOfSpeechDetection
@@ -105,7 +112,7 @@
 
 - (void)recognizerDidBeginRecording:(SKRecognizer *)recognizer
 {
-  [wordScene setMessageText:@"Speak Now" color:[SKColor greenColor]];
+  [wordScene setMessageText:@"What color is this?" color:[SKColor blackColor]];
 }
 
 - (void)recognizerDidFinishRecording:(SKRecognizer *)recognizer
@@ -179,6 +186,9 @@
 
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
 {
+  if( voiceSearch == nil ) {
+    return;
+  }
   trainViewState = FAILED_RECORDING;
   [wordScene setMessageText:@"Try Again" color:[SKColor redColor]];
   long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].tryAgainSounds.count)].integerValue;
