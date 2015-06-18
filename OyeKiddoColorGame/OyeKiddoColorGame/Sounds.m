@@ -84,6 +84,7 @@
 {
   AVAudioPlayer* playingSound = [Sounds sharedData].playingSound;
   [playingSound stop];
+  playingSound.currentTime = 0;
   playingSound.delegate = nil;
   [Sounds sharedData].playingSound = nil;
 }

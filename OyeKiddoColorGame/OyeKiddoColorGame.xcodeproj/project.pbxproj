@@ -573,7 +573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f925a5b-e52a-4c6c-b936-1d1092ffb14d";
+				PROVISIONING_PROFILE = "bace902c-b57e-4ff2-b424-331e52444ee0";
 				SWIFT_OBJC_BRIDGING_HEADER = "OyeKiddoColorGame/OyeKiddoColorGame-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -594,7 +594,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4f925a5b-e52a-4c6c-b936-1d1092ffb14d";
+				PROVISIONING_PROFILE = "bace902c-b57e-4ff2-b424-331e52444ee0";
 				SWIFT_OBJC_BRIDGING_HEADER = "OyeKiddoColorGame/OyeKiddoColorGame-Bridging-Header.h";
 			};
 			name = Release;
