@@ -37,7 +37,7 @@
                                   ];
   }
 
-  NSArray *canYouTellMeFilenames = @[ @"canYouTellMe", @"canYouTellMe2"];
+  NSArray *canYouTellMeFilenames = @[ @"canYouTellMe" ];
   self.canYouTellMeSounds = [[NSMutableArray alloc] initWithCapacity:canYouTellMeFilenames.count];
   for (int i = 0; i < canYouTellMeFilenames.count; i++ ) {
     self.canYouTellMeSounds[i] = [[AVAudioPlayer alloc]
@@ -46,7 +46,7 @@
                                   ];
   }
 
-  NSArray *rightWordFilenames = @[ @"right", @"right2", @"right3", @"right4"];
+  NSArray *rightWordFilenames = @[ @"CorrectAnswer"];
   self.rightWordSounds = [[NSMutableArray alloc] initWithCapacity:rightWordFilenames.count];
   for (int i = 0; i < rightWordFilenames.count; i++ ) {
     self.rightWordSounds[i] = [[AVAudioPlayer alloc]
@@ -55,6 +55,15 @@
                                ];
   }
 
+  NSArray *tryAgainFilenames = @[ @"TryAgain"];
+  self.tryAgainSounds = [[NSMutableArray alloc] initWithCapacity:tryAgainFilenames.count];
+  for (int i = 0; i < tryAgainFilenames.count; i++ ) {
+    self.tryAgainSounds[i] = [[AVAudioPlayer alloc]
+                               initWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:tryAgainFilenames[i] ofType: @"wav" ]]
+                               error:nil
+                               ];
+  }
+  
   return self;
 }
 

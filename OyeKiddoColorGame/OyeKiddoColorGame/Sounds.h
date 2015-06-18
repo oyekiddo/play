@@ -17,6 +17,7 @@
 @property NSMutableDictionary *wrongWordSounds;
 @property NSMutableArray *canYouTellMeSounds;
 @property NSMutableArray *rightWordSounds;
+@property NSMutableArray *tryAgainSounds;
 @property AVAudioPlayer *playingSound;
 
 +(instancetype)sharedData;

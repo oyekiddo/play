@@ -22,6 +22,8 @@
 		8E3D07FF1B05788A0077D7FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D07FE1B05788A0077D7FD /* CoreGraphics.framework */; };
 		8E3D08011B0578970077D7FD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08001B0578970077D7FD /* CFNetwork.framework */; };
 		8E3D08031B05789F0077D7FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3D08021B05789F0077D7FD /* AVFoundation.framework */; };
+		8E563C4C1B335D8A00E8DB5A /* CorrectAnswer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E563C4B1B335D8A00E8DB5A /* CorrectAnswer.wav */; };
+		8E563C4E1B3364D500E8DB5A /* TryAgain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E563C4D1B3364D500E8DB5A /* TryAgain.wav */; };
 		8E57BACB1B0BF1F700E1B96C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */; };
 		8E5FCA811B0AB25000B54DA3 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */; };
 		8E5FCA891B0B040400B54DA3 /* TrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5FCA881B0B040400B54DA3 /* TrainViewController.m */; };
@@ -90,6 +92,8 @@
 		8E3D08001B0578970077D7FD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8E3D08021B05789F0077D7FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8E3D08041B0578A60077D7FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8E563C4B1B335D8A00E8DB5A /* CorrectAnswer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = CorrectAnswer.wav; path = Audio/CorrectAnswer.wav; sourceTree = "<group>"; };
+		8E563C4D1B3364D500E8DB5A /* TryAgain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = TryAgain.wav; path = Audio/TryAgain.wav; sourceTree = "<group>"; };
 		8E57BAC91B0BF1F700E1B96C /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		8E57BACA1B0BF1F700E1B96C /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		8E5FCA801B0AB25000B54DA3 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
@@ -262,6 +266,7 @@
 			children = (
 				8E8133D91B101F2400C026D5 /* canYouTellMe.wav */,
 				8E8133DA1B101F2400C026D5 /* canYouTellMe2.wav */,
+				8E563C4B1B335D8A00E8DB5A /* CorrectAnswer.wav */,
 				8E8133DB1B101F2400C026D5 /* didntgethara.wav */,
 				8E8133DC1B101F2400C026D5 /* didntgetkala.wav */,
 				8E8133DD1B101F2400C026D5 /* didntgetlaal.wav */,
@@ -279,6 +284,7 @@
 				8E8133E91B101F2400C026D5 /* right3.wav */,
 				8E8133EA1B101F2400C026D5 /* right4.wav */,
 				8E8133EB1B101F2400C026D5 /* safed.wav */,
+				8E563C4D1B3364D500E8DB5A /* TryAgain.wav */,
 				8E8133EC1B101F2400C026D5 /* wronghara.wav */,
 				8E8133ED1B101F2400C026D5 /* wrongkaala.wav */,
 				8E8133EE1B101F2400C026D5 /* wronglaal.wav */,
@@ -395,6 +401,8 @@
 				8E81340A1B101F2400C026D5 /* wrongsafed.wav in Resources */,
 				8E8134091B101F2400C026D5 /* wrongpeela.wav in Resources */,
 				8E8133F31B101F2400C026D5 /* canYouTellMe2.wav in Resources */,
+				8E563C4E1B3364D500E8DB5A /* TryAgain.wav in Resources */,
+				8E563C4C1B335D8A00E8DB5A /* CorrectAnswer.wav in Resources */,
 				8E3D07C91B05775D0077D7FD /* Images.xcassets in Resources */,
 				8E8134081B101F2400C026D5 /* wrongneela.wav in Resources */,
 				8E8133F81B101F2400C026D5 /* didntgetpeela.wav in Resources */,
