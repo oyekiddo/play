@@ -82,6 +82,7 @@
     case GENERATE_WORD:
     case ZERO_RESULTS:
     case FAILED_RECORDING:
+      [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
       if (voiceSearch) voiceSearch = nil;
       trainViewState = START_RECORDING;
       voiceSearch = [[SKRecognizer alloc] initWithType:SKDictationRecognizerType
@@ -164,12 +165,13 @@
       [ wordScene incrementScore];
       dict[word] = [alternativesArray componentsJoinedByString:@","];
       [[GameData sharedData] save];
+      [wordScene setMessageText:@"Correct" color:[SKColor greenColor]];
       long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].rightWordSounds.count)].integerValue;
       [Sounds play:(AVAudioPlayer *)[Sounds sharedData].rightWordSounds[ index ] delegate:self ];
     }
   } else {
     trainViewState = ZERO_RESULTS;
-    [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
+    [wordScene setMessageText:@"Try Again" color:[SKColor redColor]];
     long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].tryAgainSounds.count)].integerValue;
     [Sounds play:(AVAudioPlayer *)[Sounds sharedData].tryAgainSounds[ index ] delegate:self ];
   }
@@ -178,7 +180,7 @@
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
 {
   trainViewState = FAILED_RECORDING;
-  [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
+  [wordScene setMessageText:@"Try Again" color:[SKColor redColor]];
   long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].tryAgainSounds.count)].integerValue;
   [Sounds play:(AVAudioPlayer *)[Sounds sharedData].tryAgainSounds[ index ] delegate:self ];
 }
