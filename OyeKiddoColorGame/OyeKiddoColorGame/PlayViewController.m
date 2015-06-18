@@ -81,6 +81,7 @@
   switch( trainViewState ) {
     case GENERATE_WORD:
     case ZERO_RESULTS:
+    case FAILED_RECORDING:
       if (voiceSearch) voiceSearch = nil;
       trainViewState = START_RECORDING;
       voiceSearch = [[SKRecognizer alloc] initWithType:SKDictationRecognizerType
@@ -93,7 +94,6 @@
       [self generateWord];
       break;
     case DIDNT_RECOGNIZE:
-    case FAILED_RECORDING:
       [ wordScene removeWordFromScene ];
       [[self navigationController] popToRootViewControllerAnimated:true];
       break;
@@ -169,6 +169,7 @@
     }
   } else {
     trainViewState = ZERO_RESULTS;
+    [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
     long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].tryAgainSounds.count)].integerValue;
     [Sounds play:(AVAudioPlayer *)[Sounds sharedData].tryAgainSounds[ index ] delegate:self ];
   }
@@ -177,8 +178,9 @@
 - (void)recognizer:(SKRecognizer *)recognizer didFinishWithError:(NSError *)error suggestion:(NSString *)suggestion
 {
   trainViewState = FAILED_RECORDING;
-  voiceSearch = nil;
-  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].wrongWordSounds[ word ] delegate:self ];
+  [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
+  long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].tryAgainSounds.count)].integerValue;
+  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].tryAgainSounds[ index ] delegate:self ];
 }
 
 @end
