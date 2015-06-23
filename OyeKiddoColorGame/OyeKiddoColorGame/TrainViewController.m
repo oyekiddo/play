@@ -20,6 +20,7 @@
 {
   [super viewDidLoad];
   
+  [UIApplication sharedApplication];
   trainViewController = (TrainViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"trainViewController"];
   SKView *skView = (SKView *) self.view;
   skView.multipleTouchEnabled = false;
@@ -66,6 +67,7 @@
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
+  [UIApplication sharedApplication].idleTimerDisabled = NO;
   switch( trainViewState ) {
     case START_LESSON:
     case DIDNT_RECOGNIZE:

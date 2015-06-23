@@ -82,6 +82,7 @@
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
+  [UIApplication sharedApplication].idleTimerDisabled = NO;
   switch( trainViewState ) {
     case GENERATE_WORD:
     case ZERO_RESULTS:

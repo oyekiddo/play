@@ -55,7 +55,6 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
 - (void)viewWillLayoutSubviews
 {
   [super viewWillLayoutSubviews];
-  [UIApplication sharedApplication].idleTimerDisabled = YES;
   /**
    * The login parameters should be specified in the following manner:
    *
@@ -95,7 +94,7 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
       }
       dict[ hindiName ] = d;
     }
-    [[GameData sharedData] sendDataToServer];
+//    [[GameData sharedData] sendDataToServer];
   }
 }
 

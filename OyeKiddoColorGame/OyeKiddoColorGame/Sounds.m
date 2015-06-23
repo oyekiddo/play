@@ -79,6 +79,7 @@
 
 +(void) play: (AVAudioPlayer *) sound delegate:(AudioPlayerViewController*)delegate
 {
+  [UIApplication sharedApplication].idleTimerDisabled = YES;
   sound.delegate = delegate;
   AVAudioPlayer* playingSound = [Sounds sharedData].playingSound;
   if( playingSound != nil ) {
@@ -91,6 +92,7 @@
 
 +(void) stop
 {
+  [UIApplication sharedApplication].idleTimerDisabled = NO;
   AVAudioPlayer* playingSound = [Sounds sharedData].playingSound;
   [playingSound stop];
   playingSound.currentTime = 0;
