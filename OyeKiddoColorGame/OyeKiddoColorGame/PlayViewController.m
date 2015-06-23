@@ -128,23 +128,18 @@
 //  NSLog(@"Got Here numResults = %ld", numResults );
   if( numResults != 0 ) {
     NSMutableDictionary *dict = [GameData sharedData].dict;
-    NSString *alternatives = dict[word];
-    NSMutableArray *alternativesArray = [[NSMutableArray alloc] initWithArray:[alternatives componentsSeparatedByString:@","]];
+    NSMutableDictionary *alternatives = dict[word];
     for( int i = 0; i < numResults; i++ ) {
       NSString *sentence = results.results[i];
       NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       for( NSString *w in words ) {
         //      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
-        for( NSString *w2 in alternativesArray ) {
-          //        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
-          if( [w compare: w2] == NSOrderedSame ) {
-            //          NSLog(@"found");
-            found = true;
-            break;
-          }
+        if( [alternatives objectForKey:w] ) {
+          found = true;
+          break;
         }
-        if( found ) break;
       }
+      if( found ) break;
     }
     if( !found ) {
       trainViewState = DIDNT_RECOGNIZE;
@@ -156,21 +151,10 @@
         NSString *sentence = results.results[i];
         NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         for( NSString *w in words ) {
-          Boolean found2 = false;
-          for (NSString *w2 in alternativesArray) {
-            if( [w compare: w2] == NSOrderedSame ) {
-              found2 = true;
-              break;
-            }
-          }
-          if ( !found2 ) {
-            [alternativesArray addObject:w];
-            //          NSLog([NSString stringWithFormat:@"adding key %@", w]);
-          }
+          [alternatives setObject:w forKey:w];
         }
       }
       [ wordScene incrementScore];
-      dict[word] = [alternativesArray componentsJoinedByString:@","];
       [[GameData sharedData] save];
       [wordScene setMessageText:@"Correct" color:[SKColor greenColor]];
       long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].rightWordSounds.count)].integerValue;

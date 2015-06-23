@@ -88,9 +88,14 @@ const unsigned char SpeechKitApplicationKey[] = {0x92, 0x46, 0x0c, 0x43, 0x8d, 0
     
     for( int i=0; i < tempArray.count; i++ ) {
       NSString *hindiName = [Words sharedData].hindiNames[i];
-      dict[ hindiName ] = tempArray[i];
+      NSArray *alternatives = [tempArray[i] componentsSeparatedByString:@","];
+      NSMutableDictionary *d = [[NSMutableDictionary alloc] init];
+      for( NSString *w in alternatives ) {
+        [d setObject:w forKey:w];
+      }
+      dict[ hindiName ] = d;
     }
-//    [[GameData sharedData] sendDataToServer];
+    [[GameData sharedData] sendDataToServer];
   }
 }
 

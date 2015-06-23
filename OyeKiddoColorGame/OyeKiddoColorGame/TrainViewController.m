@@ -99,13 +99,13 @@
 {
   NSString *hindiName = [Words sharedData].hindiNames[lessonNumber];
   NSMutableDictionary *dict = [GameData sharedData].dict;
-  NSString *alternatives = dict[word];
+  NSMutableDictionary *alternatives = dict[word];
   if( alternatives == nil ) {
-    alternatives = hindiName;
+    alternatives = [[NSMutableDictionary alloc] init];
+    [alternatives setObject:hindiName forKey:hindiName];
     [GameData sharedData].dict[word] = alternatives;
 //    NSLog([NSString stringWithFormat:@"adding key %@", hindiName]);
   }
-  NSMutableArray *alternativesArray = [[NSMutableArray alloc] initWithArray:[alternatives componentsSeparatedByString:@","]];
   long numResults = [results.results count];
   
   Boolean found = false;
@@ -114,27 +114,22 @@
     NSString *sentence = results.results[i];
     NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     for( NSString *w in words ) {
-//      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
-      for( NSString *w2 in alternativesArray ) {
-//        NSLog([NSString stringWithFormat:@"comparing %@ with %@", w, w2]);
-        if( [w compare: w2] == NSOrderedSame ) {
-//          NSLog(@"found");
-          found = true;
-          break;
-        }
+      //      NSLog([NSString stringWithFormat:@"TESTING %@", w]);
+      if( [alternatives objectForKey:w] ) {
+        found = true;
+        break;
       }
-      if( found ) break;
     }
+    if( found ) break;
   }
   if( !found ) {
     for( int i = 0; i < numResults; i++ ) {
       NSString *sentence = results.results[i];
       NSArray *words = [sentence componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       for( NSString *w in words ) {
-        [alternativesArray addObject:w];
+        [alternatives setObject:w forKey:w];
       }
     }
-    dict[word] = [alternativesArray componentsJoinedByString:@","];
     [[GameData sharedData] save];
     trainViewState = DIDNT_RECOGNIZE;
     voiceSearch = nil;
