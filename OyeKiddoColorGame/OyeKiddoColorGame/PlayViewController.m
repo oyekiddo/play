@@ -125,6 +125,7 @@
 {
   long numResults = [results.results count];
   
+  [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
   Boolean found = false;
 //  NSLog(@"Got Here numResults = %ld", numResults );
   if( numResults != 0 ) {
