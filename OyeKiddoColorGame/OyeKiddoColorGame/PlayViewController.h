@@ -18,7 +18,7 @@
   WordScene *wordScene;
   NSString *word;
   int wordIndex;
-  Boolean firstTime;
+//  Boolean firstTime;
 
   SKRecognizer* voiceSearch;
 

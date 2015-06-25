@@ -33,7 +33,7 @@
   [[GameData sharedData] save];
   [[GameData sharedData] reset];
   trainViewState = IDLE;
-  firstTime = true;
+//  firstTime = true;
   [self generateWord];
 }
 
@@ -68,20 +68,21 @@
   [wordScene addWordToScene: [Words sharedData].names[wordIndex]];
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];
   long index = [NSNumber numberWithInt:arc4random_uniform((int) [Sounds sharedData].canYouTellMeSounds.count)].integerValue;
-  if( firstTime ) {
-    firstTime = false;
-    [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];
-  } else {
-    if (voiceSearch != nil ) {
-      [voiceSearch cancel];
-      voiceSearch = nil;
-    }
-    trainViewState = START_RECORDING;
-    voiceSearch = [[SKRecognizer alloc] initWithType:SKDictationRecognizerType
-                                           detection:SKShortEndOfSpeechDetection
-                                            language:@"hi_IN"
-                                            delegate:self];
-  }
+  [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];
+//  if( firstTime ) {
+//    firstTime = false;
+//    [Sounds play:(AVAudioPlayer *)[Sounds sharedData].canYouTellMeSounds[ index ] delegate:self ];
+//  } else {
+//    if (voiceSearch != nil ) {
+//      [voiceSearch cancel];
+//      voiceSearch = nil;
+//    }
+//    trainViewState = START_RECORDING;
+//    voiceSearch = [[SKRecognizer alloc] initWithType:SKDictationRecognizerType
+//                                           detection:SKShortEndOfSpeechDetection
+//                                            language:@"hi_IN"
+//                                            delegate:self];
+//  }
 }
 
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag

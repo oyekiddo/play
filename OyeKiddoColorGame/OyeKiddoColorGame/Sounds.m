@@ -37,7 +37,7 @@
                                   ];
   }
 
-  NSArray *canYouTellMeFilenames = @[ @"canYouTellMe" ];
+  NSArray *canYouTellMeFilenames = @[ @"canYouTellMe", @"canYouTellMe2" ];
   self.canYouTellMeSounds = [[NSMutableArray alloc] initWithCapacity:canYouTellMeFilenames.count];
   for (int i = 0; i < canYouTellMeFilenames.count; i++ ) {
     self.canYouTellMeSounds[i] = [[AVAudioPlayer alloc]
