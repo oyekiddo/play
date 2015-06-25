@@ -53,15 +53,15 @@ SKLabelNode* _speak;
 -(void) setupHUD
 {
   _score = [[SKLabelNode alloc] initWithFontNamed:@"Futura-CondensedMedium"];
-  _score.fontSize = 24.0;
-  _score.position = CGPointMake((-viewSize.width/2) + 40, (-viewSize.width/2) - 12);
+  _score.fontSize = 40.0;
+  _score.position = CGPointMake((-viewSize.width/2) + 60, (-viewSize.width/2)-30);
   _score.fontColor = [SKColor greenColor];
   _score.text = @"Score: 0";
   [self addChild:_score];
   
   _highScore = [[SKLabelNode alloc] initWithFontNamed:@"Futura-CondensedMedium"];
-  _highScore.fontSize = 24.0;
-  _highScore.position = CGPointMake(20,  (-viewSize.width/2) - 12);
+  _highScore.fontSize = 40.0;
+  _highScore.position = CGPointMake(80,  (-viewSize.width/2)-30);
   _highScore.fontColor = [SKColor redColor];
   _highScore.text = [NSString stringWithFormat:@"High Score: %li", [GameData sharedData].highScore];
   [self addChild:_highScore];
@@ -78,7 +78,7 @@ SKLabelNode* _speak;
 -(void) setupMessage
 {
   _speak = [[SKLabelNode alloc] initWithFontNamed:@"Futura-CondensedMedium"];
-  _speak.fontSize = 48.0;
+  _speak.fontSize = 50.0;
   _speak.position = CGPointMake( 0,  (viewSize.width/2) + 12);
   _speak.fontColor = [SKColor redColor];
   [self addChild:_speak];

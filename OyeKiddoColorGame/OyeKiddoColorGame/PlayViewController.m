@@ -59,7 +59,11 @@
 - (void) generateWord
 {
   trainViewState = GENERATE_WORD;
-  wordIndex = [Words random];
+  int newWordIndex = [Words random];
+  while( newWordIndex == wordIndex ) {
+    newWordIndex = [Words random];
+  }
+  wordIndex = newWordIndex;
   word = [Words sharedData].hindiNames[wordIndex];
   [wordScene addWordToScene: [Words sharedData].names[wordIndex]];
   [wordScene setMessageText:@"Please Wait" color:[SKColor redColor]];

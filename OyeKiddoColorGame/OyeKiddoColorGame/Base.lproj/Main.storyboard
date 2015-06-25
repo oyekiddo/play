@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n8x-rN-DQZ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -32,21 +33,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr2-AM-Mnd">
-                                <rect key="frame" x="162" y="215" width="277" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEz-qK-IyM">
+                                <rect key="frame" x="100" y="392" width="400" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="5VK-4k-4w0"/>
-                                    <constraint firstAttribute="width" constant="277" id="lVG-sY-fRg"/>
+                                    <constraint firstAttribute="height" constant="80" id="R9S-ZD-zhv"/>
                                 </constraints>
-                                <state key="normal" title="Learn Colors" backgroundImage="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="trainButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p6G-vd-mIh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEz-qK-IyM">
-                                <rect key="frame" x="162" y="390" width="277" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Practice Colors" backgroundImage="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -54,14 +46,49 @@
                                     <action selector="playButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YRJ-Xa-W77"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr2-AM-Mnd">
+                                <rect key="frame" x="100" y="208" width="400" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="8ok-Dv-XKh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Learn Colors" backgroundImage="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="trainButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p6G-vd-mIh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DuQ-YF-m6M"/>
-                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="trailing" secondItem="PEz-qK-IyM" secondAttribute="trailing" id="HLd-hO-w1d"/>
-                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="151" id="LnG-xA-bvp"/>
-                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="leading" secondItem="PEz-qK-IyM" secondAttribute="leading" id="n6h-hF-2NL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PEz-qK-IyM" secondAttribute="trailing" constant="20" id="663-6D-Vpo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PEz-qK-IyM" secondAttribute="trailing" constant="84" id="A2S-n4-T64"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="144" id="Ge8-Ep-b0a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pr2-AM-Mnd" secondAttribute="trailing" constant="20" id="Ipa-tc-YER"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pr2-AM-Mnd" secondAttribute="trailing" constant="20" id="J7W-Xg-lK7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PEz-qK-IyM" secondAttribute="bottom" constant="128" id="LNk-xp-bxM"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="144" id="Nxq-h2-NY0"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Vgr-Pm-7Se"/>
+                            <constraint firstItem="PEz-qK-IyM" firstAttribute="trailing" secondItem="Pr2-AM-Mnd" secondAttribute="trailing" id="fl3-PI-XVo"/>
+                            <constraint firstItem="PEz-qK-IyM" firstAttribute="leading" secondItem="Pr2-AM-Mnd" secondAttribute="leading" id="iyu-fV-hZt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PEz-qK-IyM" secondAttribute="bottom" constant="144" id="o7M-jr-8oi"/>
+                            <constraint firstItem="PEz-qK-IyM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="q8t-cj-zad"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PEz-qK-IyM" secondAttribute="bottom" constant="144" id="sZ2-Wf-I0E"/>
+                            <constraint firstItem="Pr2-AM-Mnd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="yK9-N1-28Q"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ipa-tc-YER"/>
+                                <exclude reference="Nxq-h2-NY0"/>
+                                <exclude reference="Vgr-Pm-7Se"/>
+                                <exclude reference="663-6D-Vpo"/>
+                                <exclude reference="A2S-n4-T64"/>
+                                <exclude reference="q8t-cj-zad"/>
+                                <exclude reference="LNk-xp-bxM"/>
+                                <exclude reference="o7M-jr-8oi"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="HRT-zY-hq5"/>
                 </viewController>
